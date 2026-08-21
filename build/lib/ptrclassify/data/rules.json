@@ -841,5 +841,352 @@
     "patterns": [
       "\\.broadband\\.corbina\\.ru$"
     ]
+  },
+  {
+    "id": "access.cable.hfc",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.98,
+    "patterns": [
+      "(?:^|[._-])hfc(?:[._-]|$)",
+      "(?:^|[._-])modemcable(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "access.fiber.pon",
+    "category": "access",
+    "label": "fiber",
+    "confidence": 0.96,
+    "patterns": [
+      "(?:^|[._-])(?:gpon|xgpon|pon|fttx)(?:[._-]|$)",
+      "(?:^|[._-])fios(?:[._-]|$)",
+      "\\.googlefiber\\.net$"
+    ]
+  },
+  {
+    "id": "access.wireless.explicit",
+    "category": "access",
+    "label": "wireless",
+    "confidence": 0.98,
+    "patterns": [
+      "(?:^|[._-])wireless(?:[._-]|$)",
+      "(?:^|[._-])fixed[-._]wireless(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "access.pppoe",
+    "category": "access",
+    "label": "dialup-ppp",
+    "confidence": 0.97,
+    "patterns": [
+      "(?:^|[._-])pppoe(?:[._-]|$)",
+      "(?:^|[._-])ppp[-._]bb(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "role.cpe",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.96,
+    "patterns": [
+      "(?:^|[._-])cpe(?:[._-]|$)",
+      "(?:^|[._-])customer(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "hosting.vps",
+    "category": "hosting",
+    "label": "hosting",
+    "confidence": 0.98,
+    "patterns": [
+      "(?:^|[._-])vps(?:[._-]|$)",
+      "\\.vps\\.ovh\\.net$"
+    ]
+  },
+  {
+    "id": "hosting.vps.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.95,
+    "patterns": [
+      "(?:^|[._-])vps(?:[._-]|$)",
+      "\\.vps\\.ovh\\.net$"
+    ]
+  },
+  {
+    "id": "hosting.vps.vm",
+    "category": "role",
+    "label": "virtual-machine",
+    "confidence": 0.94,
+    "patterns": [
+      "(?:^|[._-])vps(?:[._-]|$)",
+      "\\.vps\\.ovh\\.net$"
+    ]
+  },
+  {
+    "id": "hosting.colo",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.97,
+    "patterns": [
+      "(?:^|[._-])colo(?:[._-]|$)",
+      "(?:^|[._-])idc(?:[._-]|$)",
+      "\\.clients\\.your-server\\.de$"
+    ]
+  },
+  {
+    "id": "hosting.colo.generic",
+    "category": "hosting",
+    "label": "hosting",
+    "confidence": 0.92,
+    "patterns": [
+      "(?:^|[._-])colo(?:[._-]|$)",
+      "(?:^|[._-])idc(?:[._-]|$)",
+      "\\.clients\\.your-server\\.de$"
+    ]
+  },
+  {
+    "id": "isp.spectrum.biz",
+    "category": "access",
+    "label": "business",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.biz\\.spectrum\\.com$"
+    ]
+  },
+  {
+    "id": "isp.ziggo.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.cable\\.dynamic\\.v4\\.ziggo\\.nl$"
+    ]
+  },
+  {
+    "id": "isp.ziggo.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.cable\\.dynamic\\.v4\\.ziggo\\.nl$"
+    ]
+  },
+  {
+    "id": "isp.verizon.fios",
+    "category": "access",
+    "label": "fiber",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.fios\\.verizon\\.net$"
+    ]
+  },
+  {
+    "id": "isp.verizon.fios.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.97,
+    "patterns": [
+      "^pool-.*\\.fios\\.verizon\\.net$"
+    ]
+  },
+  {
+    "id": "isp.att.lightspeed",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.lightspeed\\.[^.]+\\.sbcglobal\\.net$"
+    ]
+  },
+  {
+    "id": "isp.att.lightspeed.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.lightspeed\\.[^.]+\\.sbcglobal\\.net$"
+    ]
+  },
+  {
+    "id": "isp.optonline.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.97,
+    "patterns": [
+      "^ool-[0-9a-f]+\\.dyn\\.optonline\\.net$"
+    ]
+  },
+  {
+    "id": "isp.optonline.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.95,
+    "patterns": [
+      "^ool-[0-9a-f]+\\.dyn\\.optonline\\.net$"
+    ]
+  },
+  {
+    "id": "isp.rogers.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.cpe\\.net\\.cable\\.rogers\\.com$"
+    ]
+  },
+  {
+    "id": "isp.rogers.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.cpe\\.net\\.cable\\.rogers\\.com$"
+    ]
+  },
+  {
+    "id": "isp.virginmedia.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.(?:pon|cable)\\.virginmedia\\.net$"
+    ]
+  },
+  {
+    "id": "isp.virginmedia.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.(?:pon|cable)\\.virginmedia\\.net$"
+    ]
+  },
+  {
+    "id": "isp.telstra.cpe.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.96,
+    "patterns": [
+      "^cpe-.*\\.asp\\.telstra\\.net$"
+    ]
+  },
+  {
+    "id": "isp.bbox.dsl",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.dsl\\.(?:sta\\.)?abo\\.bbox\\.fr$"
+    ]
+  },
+  {
+    "id": "isp.bbox.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.abo\\.bbox\\.fr$"
+    ]
+  },
+  {
+    "id": "isp.infinitum.dsl",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.98,
+    "patterns": [
+      "^dsl-.*-dynamic\\.prod-infinitum\\.com\\.mx$"
+    ]
+  },
+  {
+    "id": "isp.infinitum.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.95,
+    "patterns": [
+      "^dsl-.*-dynamic\\.prod-infinitum\\.com\\.mx$"
+    ]
+  },
+  {
+    "id": "isp.videotron.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.98,
+    "patterns": [
+      "^modemcable.*\\.mc\\.videotron\\.ca$"
+    ]
+  },
+  {
+    "id": "isp.videotron.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.94,
+    "patterns": [
+      "^modemcable.*\\.mc\\.videotron\\.ca$"
+    ]
+  },
+  {
+    "id": "isp.bt.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.94,
+    "patterns": [
+      "^host[0-9-]+\\.range[0-9-]+\\.btcentralplus\\.com$"
+    ]
+  },
+  {
+    "id": "isp.frontier.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.91,
+    "patterns": [
+      "\\.ip\\.frontiernet\\.net$",
+      "\\.drr\\d+\\..*\\.frontiernet\\.net$"
+    ]
+  },
+  {
+    "id": "isp.sfr.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.94,
+    "patterns": [
+      "^[0-9.]+\\.rev\\.sfr\\.net$"
+    ]
+  },
+  {
+    "id": "isp.hinet.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.92,
+    "patterns": [
+      "\\.(?:dynamic-ip|hinet-ip|emome-ip)\\.hinet\\.net$"
+    ]
+  },
+  {
+    "id": "isp.ziggo.dynamic",
+    "category": "allocation",
+    "label": "dynamic",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.cable\\.dynamic\\.v4\\.ziggo\\.nl$"
+    ]
+  },
+  {
+    "id": "isp.optonline.dynamic",
+    "category": "allocation",
+    "label": "dynamic",
+    "confidence": 0.99,
+    "patterns": [
+      "^ool-[0-9a-f]+\\.dyn\\.optonline\\.net$"
+    ]
+  },
+  {
+    "id": "isp.infinitum.dynamic",
+    "category": "allocation",
+    "label": "dynamic",
+    "confidence": 0.99,
+    "patterns": [
+      "^dsl-.*-dynamic\\.prod-infinitum\\.com\\.mx$"
+    ]
   }
 ]
