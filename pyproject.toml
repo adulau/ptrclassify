@@ -19,9 +19,11 @@ classifiers = [
 
 [project.optional-dependencies]
 hyperscan = ["hyperscan>=0.7.0"]
+api = ["fastapi>=0.110", "uvicorn>=0.29"]
 
 [project.scripts]
 ptrclassify = "ptrclassify.cli:main"
+ptrclassify-api = "ptrclassify.api:main"
 
 [tool.setuptools.package-data]
 ptrclassify = ["data/*.json"]

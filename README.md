@@ -39,6 +39,27 @@ The default `re` engine has no third-party dependencies. The Hyperscan engine
 compiles all rule expressions into a single database and returns the same
 labels and evidence as the default engine.
 
+## API service
+
+Install the API dependencies and start the FastAPI service:
+
+```bash
+python -m pip install '.[api]'
+ptrclassify-api
+```
+
+The interactive Swagger UI is available at `http://localhost:8000/docs`, and
+FastAPI serves the OpenAPI document at `http://localhost:8000/openapi.json`.
+The same document is checked into this repository as [`openapi.json`](openapi.json).
+
+Classify one or more hostnames or complete PTR record lines in one request:
+
+```bash
+curl -X POST http://localhost:8000/lookup \
+  -H 'content-type: application/json' \
+  -d '{"records":["ec2-3-151-166-120.us-east-2.compute.amazonaws.com.","188.147.228.101.nat.umts.dynamic.t-mobile.pl."]}'
+```
+
 ## Library API
 
 ```python
