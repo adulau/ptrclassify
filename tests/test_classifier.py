@@ -1,3 +1,5 @@
+import pytest
+
 from ptrclassify import PTRClassifier, classify, parse_ptr_record
 
 
@@ -92,3 +94,70 @@ def test_misp_taxonomy_covers_every_classifier_label():
     generated = {("naming", "ip-encoded"), ("naming", "generic-reverse"), ("dns", "cname")}
     assert {(rule["category"], rule["label"]) for rule in rules} | generated <= declared
     assert taxonomy["namespace"] == "ptrclassify"
+
+
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
+        (
+            "217-62-56-51.cable.dynamic.v4.ziggo.nl",
+            {
+                'ptrclassify:allocation="dynamic"',
+                'ptrclassify:access="cable"',
+                'ptrclassify:access="residential"',
+            },
+        ),
+        (
+            "pool-74-96-220-47.washdc.fios.verizon.net",
+            {
+                'ptrclassify:allocation="dynamic"',
+                'ptrclassify:access="fiber"',
+                'ptrclassify:access="residential"',
+            },
+        ),
+        (
+            "45-18-251-200.lightspeed.miamfl.sbcglobal.net",
+            {
+                'ptrclassify:access="dsl"',
+                'ptrclassify:access="residential"',
+            },
+        ),
+        (
+            "ool-18bdf614.dyn.optonline.net",
+            {
+                'ptrclassify:allocation="dynamic"',
+                'ptrclassify:access="cable"',
+                'ptrclassify:access="residential"',
+            },
+        ),
+        (
+            "dsl-208-230-135-189-dynamic.prod-infinitum.com.mx",
+            {
+                'ptrclassify:allocation="dynamic"',
+                'ptrclassify:access="dsl"',
+                'ptrclassify:access="residential"',
+            },
+        ),
+        (
+            "vps-56086a54.vps.ovh.net",
+            {
+                'ptrclassify:hosting="hosting"',
+                'ptrclassify:hosting="datacenter"',
+                'ptrclassify:role="virtual-machine"',
+            },
+        ),
+        (
+            "syn-150-220-194-060.biz.spectrum.com",
+            {'ptrclassify:access="business"'},
+        ),
+        (
+            "cpe-121-208-95-134.qb51.nqld.asp.telstra.net",
+            {
+                'ptrclassify:access="residential"',
+                'ptrclassify:role="customer"',
+            },
+        ),
+    ],
+)
+def test_sample_isp_templates(hostname, expected):
+    assert expected <= values(hostname)
