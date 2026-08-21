@@ -22,7 +22,13 @@ Examples of orthogonal labels:
 python -m pip install .
 ```
 
-Or for development:
+Or install the published package from PyPI:
+
+```bash
+python -m pip install ptrclassify
+```
+
+For development:
 
 ```bash
 python -m pip install -e .
@@ -169,3 +175,16 @@ For production enrichment, PTR classification is best combined with ASN/RDAP, BG
 The classifier emits labels in MISP machine-tag form (`ptrclassify:predicate="value"`). A MISP taxonomy definition suitable for validation or import is provided in `misp-taxonomy/machinetag.json`.
 
 The built-in taxonomy is not claimed to be an Internet standard. It is designed as a practical, extensible CTI/network-enrichment taxonomy with orthogonal namespaces instead of a single mutually-exclusive class.
+
+## Publishing
+
+Releases are published by the `Publish to PyPI` GitHub Actions workflow. Before
+the first release, configure a [PyPI trusted publisher](https://docs.pypi.org/trusted-publishers/adding-a-publisher/)
+for this repository with workflow name `publish.yml` and environment name
+`pypi`; no long-lived PyPI API token is required.
+
+To publish a new version, update `project.version` in `pyproject.toml`, merge the
+change, and publish a GitHub release. The workflow builds both the source and
+wheel distributions, validates them, and publishes them to the `ptrclassify`
+PyPI project. It can also be started manually from the Actions tab when a
+release job needs to be retried.
