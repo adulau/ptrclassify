@@ -194,3 +194,21 @@ def test_additional_isp_domain_rules(hostname, expected):
 )
 def test_additional_hosting_domain_rules(hostname):
     assert {"hosting", "datacenter"} <= {label.label for label in classify(hostname)}
+
+
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
+        ("ecs-60-202-166-148.compute.hwclouds-dns.com", {"cloud", "datacenter", "virtual-machine", "huawei-cloud"}),
+        ("45.76.93.56.vultrusercontent.com", {"cloud", "datacenter", "virtual-machine", "vultr"}),
+        ("static.154.119.217.95.clients.your-server.de", {"hosting", "datacenter", "hetzner"}),
+        ("a104-99-31-223.deploy.static.akamaitechnologies.com", {"cdn", "datacenter", "akamai"}),
+        ("KD113144064163.ppp-bb.dion.ne.jp", {"residential", "broadband", "dialup-ppp"}),
+        ("c9501775.virtua.com.br", {"residential", "broadband", "cable"}),
+        ("193-253-51-239.ftth.fr.orangecustomers.net", {"residential", "fiber"}),
+        ("167-234-233-166.mobile.uscc.net", {"mobile", "customer"}),
+        ("83-232-170-93.biz.kpn.net", {"business"}),
+    ],
+)
+def test_new_operator_cloud_datacenter_and_cdn_rules(hostname, expected):
+    assert expected <= {label.label for label in classify(hostname)}

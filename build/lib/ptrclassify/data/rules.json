@@ -1402,5 +1402,219 @@
       "\\.choopa\\.net$",
       "\\.dedicated\\.hosteurope\\.de$"
     ]
+  },
+  {
+    "id": "cloud.huawei.provider",
+    "category": "provider",
+    "label": "huawei-cloud",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.compute\\.hwclouds-dns\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.huawei.cloud",
+    "category": "hosting",
+    "label": "cloud",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.compute\\.hwclouds-dns\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.huawei.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.compute\\.hwclouds-dns\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.huawei.vm",
+    "category": "role",
+    "label": "virtual-machine",
+    "confidence": 0.98,
+    "patterns": [
+      "^ecs-.*\\.compute\\.hwclouds-dns\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.vultr.provider",
+    "category": "provider",
+    "label": "vultr",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.vultrusercontent\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.vultr.cloud",
+    "category": "hosting",
+    "label": "cloud",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.vultrusercontent\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.vultr.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.vultrusercontent\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.vultr.vm",
+    "category": "role",
+    "label": "virtual-machine",
+    "confidence": 0.95,
+    "patterns": [
+      "\\.vultrusercontent\\.com$"
+    ]
+  },
+  {
+    "id": "hosting.hetzner.provider",
+    "category": "provider",
+    "label": "hetzner",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.clients\\.your-server\\.de$"
+    ]
+  },
+  {
+    "id": "isp.consumer.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.92,
+    "patterns": [
+      "\\.htoj\\.j-cnet\\.jp$",
+      "\\.ppp-bb\\.dion\\.ne\\.jp$",
+      "\\.au-net\\.ne\\.jp$",
+      "\\.range[0-9-]+\\.btcentralplus\\.com$",
+      "\\.rev\\.dnainternet\\.fi$",
+      "\\.cox\\.net$",
+      "\\.east\\.verizon\\.net$",
+      "\\.dsl\\.brasiltelecom\\.net\\.br$",
+      "\\.res\\.spectrum\\.com$",
+      "\\.orangecustomers\\.net$",
+      "\\.virtua\\.com\\.br$",
+      "\\.dynamic\\.telecom\\.kz$",
+      "\\.qwest\\.net$",
+      "\\.home\\.otenet\\.gr$",
+      "\\.rev\\.home\\.ne\\.jp$",
+      "\\.user3p\\.vtal\\.net\\.br$",
+      "\\.hinet\\.net$",
+      "\\.subs\\.proxad\\.net$",
+      "\\.rev\\.sfr\\.net$",
+      "\\.bbtec\\.net$",
+      "\\.dip\\d*\\.t-ipconnect\\.de$",
+      "\\.pools\\.vodafone-ip\\.de$",
+      "\\.baf\\.movistar\\.cl$",
+      "\\.telefonica\\.de$",
+      "\\.fios\\.verizon\\.net$",
+      "\\.hsd1\\.[a-z]{2}\\.comcast\\.net$",
+      "\\.dynamic\\.orange\\.(?:es|sk)$",
+      "\\.abo\\.wanadoo\\.fr$",
+      "\\.optusnet\\.com\\.au$",
+      "\\.prod-infinitum\\.com\\.mx$",
+      "\\.lightspeed\\.[^.]+\\.sbcglobal\\.net$",
+      "\\.cpe\\.net\\.cable\\.rogers\\.com$"
+    ]
+  },
+  {
+    "id": "isp.consumer.broadband",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.88,
+    "patterns": [
+      "\\.htoj\\.j-cnet\\.jp$",
+      "\\.ppp-bb\\.dion\\.ne\\.jp$",
+      "\\.au-net\\.ne\\.jp$",
+      "\\.range[0-9-]+\\.btcentralplus\\.com$",
+      "\\.bbtec\\.net$",
+      "\\.subs\\.proxad\\.net$",
+      "\\.rev\\.sfr\\.net$",
+      "\\.virtua\\.com\\.br$",
+      "\\.home\\.otenet\\.gr$"
+    ]
+  },
+  {
+    "id": "isp.consumer.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.virtua\\.com\\.br$",
+      "\\.res\\.spectrum\\.com$",
+      "\\.hsd1\\.[a-z]{2}\\.comcast\\.net$",
+      "\\.shawcable\\.net$",
+      "\\.cm\\.vtr\\.net$"
+    ]
+  },
+  {
+    "id": "isp.consumer.dsl",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.dip\\d*\\.t-ipconnect\\.de$",
+      "\\.lightspeed\\.[^.]+\\.sbcglobal\\.net$",
+      "\\.pools\\.vodafone-ip\\.de$",
+      "\\.prod-infinitum\\.com\\.mx$",
+      "\\.home\\.otenet\\.gr$",
+      "\\.dynamic\\.telecom\\.kz$"
+    ]
+  },
+  {
+    "id": "isp.consumer.fiber",
+    "category": "access",
+    "label": "fiber",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.ftth\\.fr\\.orangecustomers\\.net$",
+      "\\.fios\\.verizon\\.net$",
+      "\\.ftth\\.abo\\.bbox\\.fr$",
+      "\\.ftth\\.glasoperator\\.nl$"
+    ]
+  },
+  {
+    "id": "isp.operator.mobile",
+    "category": "access",
+    "label": "mobile",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.mobile\\.uscc\\.net$",
+      "\\.mobile\\.tre\\.se$",
+      "\\.sub-[0-9.-]+\\.myvzw\\.com$",
+      "\\.umts\\.vodacom\\.co\\.za$",
+      "\\.emome-ip\\.hinet\\.net$"
+    ]
+  },
+  {
+    "id": "isp.operator.mobile.customer",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.9,
+    "patterns": [
+      "\\.mobile\\.uscc\\.net$",
+      "\\.mobile\\.tre\\.se$",
+      "\\.myvzw\\.com$",
+      "\\.umts\\.vodacom\\.co\\.za$"
+    ]
+  },
+  {
+    "id": "isp.business.access",
+    "category": "access",
+    "label": "business",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.biz\\.kpn\\.net$",
+      "\\.biz\\.spectrum\\.com$",
+      "\\.business\\.telecomitalia\\.it$",
+      "\\.hfc\\.comcastbusiness\\.net$"
+    ]
   }
 ]

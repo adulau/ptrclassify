@@ -90,7 +90,10 @@
         {"value": "amazon-cloudfront", "expanded": "Amazon CloudFront."},
         {"value": "google-cloud", "expanded": "Google Cloud."},
         {"value": "oracle-cloud", "expanded": "Oracle Cloud."},
-        {"value": "akamai", "expanded": "Akamai."}
+        {"value": "akamai", "expanded": "Akamai."},
+        {"value": "huawei-cloud", "expanded": "Huawei Cloud."},
+        {"value": "vultr", "expanded": "Vultr cloud infrastructure."},
+        {"value": "hetzner", "expanded": "Hetzner hosting infrastructure."}
       ]
     },
     {
