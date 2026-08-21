@@ -1,0 +1,119 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ptrclassify API",
+    "description": "Explainable heuristic classification for reverse-DNS PTR hostnames. PTR names are operator-controlled, so results are inferences rather than facts.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": ["service"],
+        "summary": "Health",
+        "description": "Report that the service is ready to accept requests.",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {"application/json": {"schema": {"type": "object", "additionalProperties": {"type": "string"}}}}
+          }
+        }
+      }
+    },
+    "/lookup": {
+      "post": {
+        "tags": ["PTR records"],
+        "summary": "Lookup",
+        "description": "Classify one or more PTR hostnames or complete PTR record lines.",
+        "operationId": "lookup_lookup_post",
+        "requestBody": {
+          "required": true,
+          "content": {"application/json": {"schema": {"$ref": "#/components/schemas/LookupRequest"}}}
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/LookupResponse"}}}
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/HTTPValidationError"}}}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LookupRequest": {
+        "properties": {
+          "records": {
+            "items": {"type": "string"},
+            "type": "array",
+            "minItems": 1,
+            "title": "Records",
+            "description": "One or more PTR hostnames or complete DNS PTR records.",
+            "examples": [["101.228.147.188.in-addr.arpa. PTR 188.147.228.101.nat.umts.dynamic.t-mobile.pl."]]
+          }
+        },
+        "type": "object",
+        "required": ["records"],
+        "title": "LookupRequest",
+        "description": "PTR records or hostnames to classify."
+      },
+      "LookupResponse": {
+        "properties": {
+          "results": {"items": {"$ref": "#/components/schemas/ClassificationResponse"}, "type": "array", "title": "Results"}
+        },
+        "type": "object",
+        "required": ["results"],
+        "title": "LookupResponse",
+        "description": "Classification results in the same order as the request."
+      },
+      "ClassificationResponse": {
+        "properties": {
+          "input": {"type": "string", "title": "Input"},
+          "hostname": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Hostname"},
+          "address": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Address"},
+          "record_type": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Record Type"},
+          "labels": {"items": {"$ref": "#/components/schemas/LabelResponse"}, "type": "array", "title": "Labels"},
+          "hints": {"type": "object", "additionalProperties": true, "title": "Hints"}
+        },
+        "type": "object",
+        "required": ["input", "hostname", "labels", "hints"],
+        "title": "ClassificationResponse",
+        "description": "Classification of a single submitted PTR record."
+      },
+      "LabelResponse": {
+        "properties": {
+          "category": {"type": "string", "title": "Category"},
+          "label": {"type": "string", "title": "Label"},
+          "confidence": {"type": "number", "title": "Confidence"},
+          "evidence": {"items": {"type": "string"}, "type": "array", "title": "Evidence"},
+          "rule_ids": {"items": {"type": "string"}, "type": "array", "title": "Rule Ids"},
+          "description": {"anyOf": [{"type": "string"}, {"type": "null"}], "title": "Description"},
+          "value": {"type": "string", "title": "Value"}
+        },
+        "type": "object",
+        "required": ["category", "label", "confidence", "evidence", "rule_ids", "value"],
+        "title": "LabelResponse",
+        "description": "One explainable classification label."
+      },
+      "HTTPValidationError": {
+        "properties": {"detail": {"items": {"$ref": "#/components/schemas/ValidationError"}, "type": "array", "title": "Detail"}},
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {"items": {"anyOf": [{"type": "string"}, {"type": "integer"}]}, "type": "array", "title": "Location"},
+          "msg": {"type": "string", "title": "Message"},
+          "type": {"type": "string", "title": "Error Type"}
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
