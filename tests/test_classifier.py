@@ -161,3 +161,36 @@ def test_misp_taxonomy_covers_every_classifier_label():
 )
 def test_sample_isp_templates(hostname, expected):
     assert expected <= values(hostname)
+
+
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
+        ("p3810018-ipxg12301sapodori.hokkaido.ocn.ne.jp", {"residential", "broadband"}),
+        ("207.240.114.89.rev.vodafone.pt", {"residential", "broadband"}),
+        ("pool-246-114-123-181.telecel.com.py", {"mobile", "customer"}),
+        ("191.31.240.210.dynamic.adsl.gvt.net.br", {"residential", "dsl"}),
+        ("217-209-174-218-no600.tbcn.telia.com", {"residential"}),
+        ("host-82-58-205-5.retail.telecomitalia.it", {"residential", "dsl"}),
+        ("host-2-102-205-112.as13285.net", {"residential"}),
+        ("n58-104-225-87.mrk2.qld.optusnet.com.au", {"residential"}),
+        ("S0106400fc14910b0.wk.shawcable.net", {"residential", "cable"}),
+        ("a89-155-58-205.cpe.netcabo.pt", {"residential", "cable"}),
+        ("50-78-234-6-static.hfc.comcastbusiness.net", {"business", "cable"}),
+    ],
+)
+def test_additional_isp_domain_rules(hostname, expected):
+    got = {label.label for label in classify(hostname)}
+    assert expected <= got
+
+
+@pytest.mark.parametrize(
+    "hostname",
+    [
+        "vmi2847648.contaboserver.net",
+        "66.55.149.8.choopa.net",
+        "lvps87-230-81-0.dedicated.hosteurope.de",
+    ],
+)
+def test_additional_hosting_domain_rules(hostname):
+    assert {"hosting", "datacenter"} <= {label.label for label in classify(hostname)}
