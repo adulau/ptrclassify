@@ -1,0 +1,845 @@
+[
+  {
+    "id": "alloc.dynamic.explicit",
+    "category": "allocation",
+    "label": "dynamic",
+    "confidence": 0.99,
+    "patterns": [
+      "(?:^|[._-])dynamic(?:[._-]|$)",
+      "(?:^|[._-])dyn(?:[._-]|$)",
+      "(?:^|[._-])dhcp(?:[._-]|$)",
+      "(?:^|[._-])pool(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "alloc.static.explicit",
+    "category": "allocation",
+    "label": "static",
+    "confidence": 0.99,
+    "patterns": [
+      "(?:^|[._-])static(?:[._-]|$)",
+      "(?:^|[._-])fixed(?:[._-]|$)",
+      "(?:^|[._-])sta(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "alloc.reserved",
+    "category": "allocation",
+    "label": "reserved",
+    "confidence": 0.98,
+    "patterns": [
+      "(?:^|[._-])unused(?:[._-]|$)",
+      "(?:^|[._-])reserve(?:d)?(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "access.mobile",
+    "category": "access",
+    "label": "mobile",
+    "confidence": 0.98,
+    "patterns": [
+      "(?:^|[._-])mobile(?:[._-]|$)",
+      "(?:^|[._-])umts(?:[._-]|$)",
+      "(?:^|[._-])lte(?:[._-]|$)",
+      "(?:^|[._-])5g(?:[._-]|$)",
+      "(?:^|[._-])4g(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "access.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.98,
+    "patterns": [
+      "(?:^|[._-])cable(?:[._-]|$)",
+      "(?:^|[._-])docsis(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "access.dsl",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.99,
+    "patterns": [
+      "(?:^|[._-])dsl(?:[._-]|$)",
+      "(?:^|[._-])adsl(?:[._-]|$)",
+      "(?:^|[._-])vdsl(?:[._-]|$)",
+      "vodafonedsl"
+    ]
+  },
+  {
+    "id": "access.fiber",
+    "category": "access",
+    "label": "fiber",
+    "confidence": 0.99,
+    "patterns": [
+      "(?:^|[._-])ftth(?:[._-]|$)",
+      "(?:^|[._-])fiber(?:[._-]|$)",
+      "(?:^|[._-])fibre(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "access.wlan",
+    "category": "access",
+    "label": "wireless",
+    "confidence": 0.97,
+    "patterns": [
+      "(?:^|[._-])wlan(?:[._-]|$)",
+      "(?:^|[._-])wifi(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "access.broadband",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.9,
+    "patterns": [
+      "(?:^|[._-])broadband(?:[._-]|$)",
+      "(?:^|[._-])bb(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "access.ppp",
+    "category": "access",
+    "label": "dialup-ppp",
+    "confidence": 0.96,
+    "patterns": [
+      "(?:^|[._-])ppp\\d*(?:[._-]|$)",
+      "^ppp\\d"
+    ]
+  },
+  {
+    "id": "access.residential.explicit",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.98,
+    "patterns": [
+      "(?:^|[._-])res(?:[._-]|$)",
+      "(?:^|[._-])residential(?:[._-]|$)",
+      "(?:^|[._-])abo(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "access.business.explicit",
+    "category": "access",
+    "label": "business",
+    "confidence": 0.99,
+    "patterns": [
+      "(?:^|[._-])business(?:[._-]|$)",
+      "(?:^|[._-])empresarial(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "translation.nat",
+    "category": "translation",
+    "label": "nat",
+    "confidence": 0.99,
+    "patterns": [
+      "(?:^|[._-])nat(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "translation.cgnat",
+    "category": "translation",
+    "label": "cgnat",
+    "confidence": 0.99,
+    "patterns": [
+      "(?:^|[._-])cgnat(?:[._-]|$)",
+      "(?:^|[._-])cgn(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "role.customer",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.9,
+    "patterns": [
+      "(?:^|[._-])cust(?:omer)?\\d*(?:[._-]|$)",
+      "(?:^|[._-])user\\d*(?:[._-]|$)",
+      "(?:^|[._-])subs?(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "role.router.explicit",
+    "category": "role",
+    "label": "router",
+    "confidence": 0.99,
+    "patterns": [
+      "(?:^|[._-])router\\d*(?:[._-]|$)",
+      "(?:^|[._-])rtr\\d*(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "role.bras",
+    "category": "role",
+    "label": "broadband-aggregation",
+    "confidence": 0.99,
+    "patterns": [
+      "(?:^|[._-])bras(?:[._-]|$)",
+      "(?:^|[._-])bng(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "role.bras-router",
+    "category": "role",
+    "label": "router",
+    "confidence": 0.98,
+    "patterns": [
+      "(?:^|[._-])bras(?:[._-]|$)",
+      "(?:^|[._-])bng(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "role.loopback",
+    "category": "role",
+    "label": "loopback-interface",
+    "confidence": 0.99,
+    "patterns": [
+      "^lo\\d+(?:[-._]|$)",
+      "(?:^|[._-])loopback(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "role.loopback-router",
+    "category": "role",
+    "label": "router",
+    "confidence": 0.98,
+    "patterns": [
+      "^lo\\d+(?:[-._]|$)",
+      "(?:^|[._-])loopback(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "role.server",
+    "category": "role",
+    "label": "server",
+    "confidence": 0.91,
+    "patterns": [
+      "^server[-._]",
+      "(?:^|[._-])server\\d*(?:[._-]|$)",
+      "(?:^|[._-])db\\d*(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "role.vpn",
+    "category": "role",
+    "label": "vpn",
+    "confidence": 0.98,
+    "patterns": [
+      "(?:^|[._-])vpn(?:[._-]|$)",
+      "(?:^|[._-])ravpn(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "role.voip",
+    "category": "role",
+    "label": "voip",
+    "confidence": 0.99,
+    "patterns": [
+      "(?:^|[._-])voip(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "role.eduroam",
+    "category": "role",
+    "label": "eduroam",
+    "confidence": 0.99,
+    "patterns": [
+      "^eduroam[-._]",
+      "(?:^|[._-])eduroam(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "network.anycast",
+    "category": "network",
+    "label": "anycast",
+    "confidence": 0.99,
+    "patterns": [
+      "(?:^|[._-])anycast(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "network.dia",
+    "category": "network",
+    "label": "dedicated-internet",
+    "confidence": 0.97,
+    "patterns": [
+      "(?:^|[._-])dia(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "network.dia-business",
+    "category": "access",
+    "label": "business",
+    "confidence": 0.95,
+    "patterns": [
+      "(?:^|[._-])dia(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "org.education.edu",
+    "category": "organization",
+    "label": "education",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.edu$",
+      "\\.edu\\.",
+      "\\.ac\\.[a-z]{2}$",
+      "(?:^|\\.)mit\\.edu$",
+      "(?:^|\\.)uio\\.no$",
+      "(?:^|\\.)unamur\\.be$"
+    ]
+  },
+  {
+    "id": "org.government",
+    "category": "organization",
+    "label": "government",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.gov$",
+      "\\.gov\\.",
+      "\\.gob\\.[a-z]{2}$"
+    ]
+  },
+  {
+    "id": "org.military",
+    "category": "organization",
+    "label": "military",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.mil$",
+      "\\.mil\\."
+    ]
+  },
+  {
+    "id": "cloud.aws.provider",
+    "category": "provider",
+    "label": "amazon-aws",
+    "confidence": 1.0,
+    "patterns": [
+      "\\.compute(?:-[0-9]+)?\\.amazonaws\\.com$",
+      "\\.compute\\.amazonaws\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.aws.cloud",
+    "category": "hosting",
+    "label": "cloud",
+    "confidence": 1.0,
+    "patterns": [
+      "\\.compute(?:-[0-9]+)?\\.amazonaws\\.com$",
+      "\\.compute\\.amazonaws\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.aws.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.compute(?:-[0-9]+)?\\.amazonaws\\.com$",
+      "\\.compute\\.amazonaws\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.aws.vm",
+    "category": "role",
+    "label": "virtual-machine",
+    "confidence": 0.99,
+    "patterns": [
+      "^ec2-.*\\.amazonaws\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.google.provider",
+    "category": "provider",
+    "label": "google-cloud",
+    "confidence": 1.0,
+    "patterns": [
+      "\\.bc\\.googleusercontent\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.google.cloud",
+    "category": "hosting",
+    "label": "cloud",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.bc\\.googleusercontent\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.google.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.bc\\.googleusercontent\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.google.vm",
+    "category": "role",
+    "label": "virtual-machine",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.bc\\.googleusercontent\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.oracle.provider",
+    "category": "provider",
+    "label": "oracle-cloud",
+    "confidence": 1.0,
+    "patterns": [
+      "\\.compute\\.oraclecloud\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.oracle.cloud",
+    "category": "hosting",
+    "label": "cloud",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.compute\\.oraclecloud\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.oracle.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.compute\\.oraclecloud\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.oracle.vm",
+    "category": "role",
+    "label": "virtual-machine",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.compute\\.oraclecloud\\.com$"
+    ]
+  },
+  {
+    "id": "cdn.cloudflare.no",
+    "category": "hosting",
+    "label": "cdn",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.cloudfront\\.net$"
+    ]
+  },
+  {
+    "id": "cdn.cloudfront.provider",
+    "category": "provider",
+    "label": "amazon-cloudfront",
+    "confidence": 1.0,
+    "patterns": [
+      "\\.cloudfront\\.net$"
+    ]
+  },
+  {
+    "id": "cdn.cloudfront.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.cloudfront\\.net$"
+    ]
+  },
+  {
+    "id": "cdn.akamai",
+    "category": "hosting",
+    "label": "cdn",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.akamaitechnologies\\.com$"
+    ]
+  },
+  {
+    "id": "cdn.akamai.provider",
+    "category": "provider",
+    "label": "akamai",
+    "confidence": 1.0,
+    "patterns": [
+      "\\.akamaitechnologies\\.com$"
+    ]
+  },
+  {
+    "id": "cdn.akamai.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.akamaitechnologies\\.com$"
+    ]
+  },
+  {
+    "id": "hosting.generic",
+    "category": "hosting",
+    "label": "hosting",
+    "confidence": 0.94,
+    "patterns": [
+      "(?:^|[._-])hosting(?:[._-]|$)",
+      "^hostingssd",
+      "\\.vhostingservices\\.com$",
+      "\\.netsons\\.net$"
+    ]
+  },
+  {
+    "id": "hosting.generic.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.86,
+    "patterns": [
+      "(?:^|[._-])hosting(?:[._-]|$)",
+      "^hostingssd",
+      "\\.vhostingservices\\.com$",
+      "\\.netsons\\.net$"
+    ]
+  },
+  {
+    "id": "isp.spectrum.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.res\\.spectrum\\.com$"
+    ]
+  },
+  {
+    "id": "isp.spectrum.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.res\\.spectrum\\.com$"
+    ]
+  },
+  {
+    "id": "isp.comcast.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.hsd\\d+\\.[a-z]{2}\\.comcast\\.net$"
+    ]
+  },
+  {
+    "id": "isp.comcast.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.hsd\\d+\\.[a-z]{2}\\.comcast\\.net$"
+    ]
+  },
+  {
+    "id": "isp.cox.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.cox\\.net$"
+    ]
+  },
+  {
+    "id": "isp.cox.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.9,
+    "patterns": [
+      "\\.cox\\.net$"
+    ]
+  },
+  {
+    "id": "isp.verizon.pool",
+    "category": "allocation",
+    "label": "dynamic",
+    "confidence": 0.97,
+    "patterns": [
+      "^pool-.*\\.verizon\\.net$"
+    ]
+  },
+  {
+    "id": "isp.verizon.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.95,
+    "patterns": [
+      "^pool-.*\\.verizon\\.net$"
+    ]
+  },
+  {
+    "id": "isp.vzw.mobile",
+    "category": "access",
+    "label": "mobile",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.myvzw\\.com$"
+    ]
+  },
+  {
+    "id": "isp.vzw.customer",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.95,
+    "patterns": [
+      "\\.myvzw\\.com$"
+    ]
+  },
+  {
+    "id": "isp.attmobile.mobile",
+    "category": "access",
+    "label": "mobile",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.mycingular\\.net$"
+    ]
+  },
+  {
+    "id": "isp.attmobile.customer",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.95,
+    "patterns": [
+      "\\.mycingular\\.net$"
+    ]
+  },
+  {
+    "id": "isp.nuro.fiber",
+    "category": "access",
+    "label": "fiber",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.ap\\.nuro\\.jp$"
+    ]
+  },
+  {
+    "id": "isp.nuro.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.92,
+    "patterns": [
+      "\\.ap\\.nuro\\.jp$"
+    ]
+  },
+  {
+    "id": "isp.softbank.bb",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.bbtec\\.net$"
+    ]
+  },
+  {
+    "id": "isp.softbank.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.91,
+    "patterns": [
+      "\\.bbtec\\.net$"
+    ]
+  },
+  {
+    "id": "isp.fibertel.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.95,
+    "patterns": [
+      "\\.fibertel\\.com\\.ar$"
+    ]
+  },
+  {
+    "id": "isp.fibertel.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.88,
+    "patterns": [
+      "\\.fibertel\\.com\\.ar$"
+    ]
+  },
+  {
+    "id": "isp.wanadoo.abo",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.abo\\.wanadoo\\.fr$"
+    ]
+  },
+  {
+    "id": "isp.wanadoo.broadband",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.9,
+    "patterns": [
+      "\\.abo\\.wanadoo\\.fr$"
+    ]
+  },
+  {
+    "id": "isp.tmobile.mobile",
+    "category": "access",
+    "label": "mobile",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.t-mobile\\.pl$"
+    ]
+  },
+  {
+    "id": "isp.play.mobile",
+    "category": "access",
+    "label": "mobile",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.dynamic\\.play\\.pl$"
+    ]
+  },
+  {
+    "id": "isp.vivozap.mobile",
+    "category": "access",
+    "label": "mobile",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.vivozap\\.com\\.br$"
+    ]
+  },
+  {
+    "id": "isp.vivozap.customer",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.92,
+    "patterns": [
+      "\\.vivozap\\.com\\.br$"
+    ]
+  },
+  {
+    "id": "isp.telepac.dsl",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.dsl\\.telepac\\.pt$"
+    ]
+  },
+  {
+    "id": "isp.bell.dsl",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.dsl\\.bell\\.ca$"
+    ]
+  },
+  {
+    "id": "isp.telus.customer",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.8,
+    "patterns": [
+      "\\.abhsia\\.telus\\.net$"
+    ]
+  },
+  {
+    "id": "isp.eir.dynamic",
+    "category": "allocation",
+    "label": "dynamic",
+    "confidence": 0.99,
+    "patterns": [
+      "-dynamic\\..*\\.eircom\\.net$"
+    ]
+  },
+  {
+    "id": "isp.eir.cablehint",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.85,
+    "patterns": [
+      "\\.cab\\..*\\.eircom\\.net$"
+    ]
+  },
+  {
+    "id": "isp.virgin.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.cable\\.virginm\\.net$"
+    ]
+  },
+  {
+    "id": "isp.virgin.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.cable\\.virginm\\.net$"
+    ]
+  },
+  {
+    "id": "isp.telekom.dip.dynamic",
+    "category": "allocation",
+    "label": "dynamic",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.dip\\d*\\.t-ipconnect\\.de$"
+    ]
+  },
+  {
+    "id": "isp.telekom.dip.dsl",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.89,
+    "patterns": [
+      "\\.dip\\d*\\.t-ipconnect\\.de$"
+    ]
+  },
+  {
+    "id": "isp.proxad.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.93,
+    "patterns": [
+      "\\.subs\\.proxad\\.net$"
+    ]
+  },
+  {
+    "id": "isp.kpn.fixed",
+    "category": "allocation",
+    "label": "static",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.fixed\\.kpn\\.net$"
+    ]
+  },
+  {
+    "id": "isp.plusnet.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.95,
+    "patterns": [
+      "\\.plusnetbroadband\\.co\\.uk$"
+    ]
+  },
+  {
+    "id": "isp.plusnet.broadband",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.plusnetbroadband\\.co\\.uk$"
+    ]
+  },
+  {
+    "id": "isp.corbinabroadband.res",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.92,
+    "patterns": [
+      "\\.broadband\\.corbina\\.ru$"
+    ]
+  }
+]

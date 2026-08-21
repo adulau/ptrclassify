@@ -1,0 +1,2 @@
+[console_scripts]
+ptrclassify = ptrclassify.cli:main
