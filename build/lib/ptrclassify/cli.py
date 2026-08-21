@@ -14,6 +14,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--json", action="store_true", help="Output one JSON object per input")
     parser.add_argument("--min-confidence", type=float, default=0.0, help="Only show labels at or above this confidence")
     parser.add_argument("--values-only", action="store_true", help="Print only MISP machine-tag values")
+    parser.add_argument(
+        "--engine", choices=("re", "hyperscan"), default="re",
+        help="Regular-expression engine (default: re)",
+    )
     return parser
 
 
@@ -38,7 +42,10 @@ def _inputs(args: argparse.Namespace):
 
 def main() -> int:
     args = build_parser().parse_args()
-    classifier = PTRClassifier()
+    try:
+        classifier = PTRClassifier(engine=args.engine)
+    except RuntimeError as exc:
+        build_parser().error(str(exc))
 
     for raw in _inputs(args):
         result = classifier.classify(raw)
