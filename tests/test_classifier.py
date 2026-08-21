@@ -1,6 +1,44 @@
+import re
+from types import SimpleNamespace
+
 import pytest
 
 from ptrclassify import PTRClassifier, classify, parse_ptr_record
+
+
+def test_hyperscan_engine_matches_standard_engine(monkeypatch):
+    class FakeDatabase:
+        def compile(self, expressions, ids, flags):
+            self.patterns = [
+                (pattern.decode(), pattern_id)
+                for pattern, pattern_id in zip(expressions, ids)
+            ]
+
+        def scan(self, subject, match_event_handler):
+            text = subject.decode()
+            for pattern, pattern_id in self.patterns:
+                match = re.search(pattern, text, re.IGNORECASE)
+                if match:
+                    match_event_handler(pattern_id, match.start(), match.end(), 0, None)
+
+    fake_hyperscan = SimpleNamespace(
+        Database=FakeDatabase,
+        HS_FLAG_CASELESS=1,
+        HS_FLAG_SOM_LEFTMOST=2,
+    )
+    monkeypatch.setattr("ptrclassify.classifier.import_module", lambda _name: fake_hyperscan)
+
+    hostname = (
+        "120.166.151.3.in-addr.arpa. PTR "
+        "ec2-3-151-166-120.us-east-2.compute.amazonaws.com."
+    )
+    hyperscan_result = PTRClassifier(engine="hyperscan").classify(hostname).to_dict()
+    assert hyperscan_result == PTRClassifier().classify(hostname).to_dict()
+
+
+def test_unknown_regexp_engine_is_rejected():
+    with pytest.raises(ValueError, match="engine must be"):
+        PTRClassifier(engine="unknown")
 
 
 def values(value: str) -> set[str]:

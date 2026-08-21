@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
+from importlib import import_module
 from importlib.resources import files
 import ipaddress
 import json
@@ -20,6 +21,7 @@ class _CompiledRule:
     label: str
     confidence: float
     regexes: tuple[re.Pattern[str], ...]
+    patterns: tuple[str, ...]
     description: str | None = None
 
 
@@ -31,11 +33,21 @@ class PTRClassifier:
     true at once.
     """
 
-    def __init__(self, extra_rules: Iterable[dict] | None = None):
+    def __init__(self, extra_rules: Iterable[dict] | None = None, engine: str = "re"):
+        """Create a classifier using the standard or Hyperscan regexp engine.
+
+        ``engine="hyperscan"`` requires the optional ``hyperscan`` package.  It
+        compiles every rule pattern into one database, which avoids performing
+        hundreds of individual regexp searches for each hostname.
+        """
+        if engine not in {"re", "hyperscan"}:
+            raise ValueError("engine must be 're' or 'hyperscan'")
         raw_rules = json.loads(files("ptrclassify.data").joinpath("rules.json").read_text())
         if extra_rules:
             raw_rules.extend(extra_rules)
         self.rules = tuple(self._compile_rule(rule) for rule in raw_rules)
+        self.engine = engine
+        self._hyperscan = self._compile_hyperscan() if engine == "hyperscan" else None
 
     @staticmethod
     def _compile_rule(rule: dict) -> _CompiledRule:
@@ -45,8 +57,31 @@ class PTRClassifier:
             label=rule["label"],
             confidence=float(rule.get("confidence", 0.8)),
             regexes=tuple(re.compile(pattern, re.IGNORECASE) for pattern in rule["patterns"]),
+            patterns=tuple(rule["patterns"]),
             description=rule.get("description"),
         )
+
+    def _compile_hyperscan(self):
+        try:
+            hyperscan = import_module("hyperscan")
+        except ImportError as exc:
+            raise RuntimeError(
+                "Hyperscan support is not installed; install ptrclassify[hyperscan]"
+            ) from exc
+
+        expressions = []
+        ids = []
+        flags = []
+        pattern_map = []
+        for rule_index, rule in enumerate(self.rules):
+            for pattern_index, pattern in enumerate(rule.patterns):
+                expressions.append(pattern.encode())
+                ids.append(len(pattern_map))
+                flags.append(hyperscan.HS_FLAG_CASELESS | hyperscan.HS_FLAG_SOM_LEFTMOST)
+                pattern_map.append((rule_index, pattern_index))
+        database = hyperscan.Database()
+        database.compile(expressions=expressions, ids=ids, flags=flags)
+        return database, tuple(pattern_map)
 
     def classify(self, value: str | PTRRecord) -> Classification:
         record = parse_ptr_record(value) if isinstance(value, str) else value
@@ -71,21 +106,15 @@ class PTRClassifier:
             lambda: {"confidence": 0.0, "evidence": [], "rule_ids": [], "description": None}
         )
 
-        for rule in self.rules:
-            for regex in rule.regexes:
-                match = regex.search(hostname)
-                if not match:
-                    continue
-                key = (rule.category, rule.label)
-                slot = matched[key]
-                slot["confidence"] = max(slot["confidence"], rule.confidence)
-                evidence = match.group(0)
-                if evidence not in slot["evidence"]:
-                    slot["evidence"].append(evidence)
-                if rule.id not in slot["rule_ids"]:
-                    slot["rule_ids"].append(rule.id)
-                slot["description"] = rule.description or TAXONOMY.get(rule.category, {}).get(rule.label)
-                break
+        for rule, evidence in self._matches(hostname):
+            key = (rule.category, rule.label)
+            slot = matched[key]
+            slot["confidence"] = max(slot["confidence"], rule.confidence)
+            if evidence not in slot["evidence"]:
+                slot["evidence"].append(evidence)
+            if rule.id not in slot["rule_ids"]:
+                slot["rule_ids"].append(rule.id)
+            slot["description"] = rule.description or TAXONOMY.get(rule.category, {}).get(rule.label)
 
         self._add_ip_encoded_hint(record, hostname, matched, result)
         self._extract_cloud_hints(hostname, result)
@@ -105,6 +134,39 @@ class PTRClassifier:
         result.labels.sort(key=lambda x: (-x.confidence, x.category, x.label))
         self._add_conflict_hints(result)
         return result
+
+    def _matches(self, hostname: str):
+        if self._hyperscan is None:
+            for rule in self.rules:
+                for regex in rule.regexes:
+                    match = regex.search(hostname)
+                    if match:
+                        yield rule, match.group(0)
+                        break
+            return
+
+        database, pattern_map = self._hyperscan
+        subject = hostname.encode()
+        matches: dict[int, tuple[int, int, int]] = {}
+
+        def on_match(pattern_id, start, end, _flags, _context):
+            rule_index, pattern_index = pattern_map[pattern_id]
+            previous = matches.get(rule_index)
+            candidate = (pattern_index, start, end)
+            if (
+                previous is None
+                or pattern_index < previous[0]
+                or (
+                    pattern_index == previous[0]
+                    and (start < previous[1] or (start == previous[1] and end > previous[2]))
+                )
+            ):
+                matches[rule_index] = candidate
+
+        database.scan(subject, match_event_handler=on_match)
+        for rule_index in sorted(matches):
+            _pattern_index, start, end = matches[rule_index]
+            yield self.rules[rule_index], subject[start:end].decode(errors="replace")
 
     @staticmethod
     def _add_conflict_hints(result: Classification) -> None:

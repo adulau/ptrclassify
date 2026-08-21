@@ -28,6 +28,17 @@ Or for development:
 python -m pip install -e .
 ```
 
+Hyperscan is available as an optional high-throughput matching engine:
+
+```bash
+python -m pip install '.[hyperscan]'
+ptrclassify --engine hyperscan 'ec2-3-151-166-120.us-east-2.compute.amazonaws.com.'
+```
+
+The default `re` engine has no third-party dependencies. The Hyperscan engine
+compiles all rule expressions into a single database and returns the same
+labels and evidence as the default engine.
+
 ## Library API
 
 ```python
@@ -37,7 +48,7 @@ labels = classify("188.147.228.101.nat.umts.dynamic.t-mobile.pl.")
 for label in labels:
     print(label.value, label.confidence)
 
-classifier = PTRClassifier()
+classifier = PTRClassifier()  # engine="re" (the default) or engine="hyperscan"
 result = classifier.classify(
     "101.228.147.188.in-addr.arpa. PTR 188.147.228.101.nat.umts.dynamic.t-mobile.pl."
 )
@@ -106,6 +117,19 @@ classifier = PTRClassifier(extra_rules=[{
     "patterns": [r"\\.cgn\\.example\\.net$"],
 }])
 ```
+
+## Benchmark
+
+After installing the optional dependency, compare steady-state lookup time on
+the bundled sample data with:
+
+```bash
+python benchmarks/lookup.py
+```
+
+Use `--iterations`, `--repeat`, or `--file` to change the workload. Classifier
+construction is deliberately excluded from the timed section so the result
+measures lookup throughput rather than one-time expression compilation.
 
 ## Design notes
 

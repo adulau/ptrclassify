@@ -17,6 +17,9 @@ classifiers = [
   "Topic :: Internet :: Name Service (DNS)",
 ]
 
+[project.optional-dependencies]
+hyperscan = ["hyperscan>=0.7.0"]
+
 [project.scripts]
 ptrclassify = "ptrclassify.cli:main"
 
