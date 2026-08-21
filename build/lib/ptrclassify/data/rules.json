@@ -1188,5 +1188,219 @@
     "patterns": [
       "^dsl-.*-dynamic\\.prod-infinitum\\.com\\.mx$"
     ]
+  },
+  {
+    "id": "isp.japan.consumer.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.(?:ocn|eonet|plala|dion|home|gol|bbiq|asahi-net)\\.(?:ne\\.)?jp$",
+      "\\.yournet\\.ne\\.jp$"
+    ]
+  },
+  {
+    "id": "isp.japan.consumer.broadband",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.91,
+    "patterns": [
+      "\\.(?:ocn|eonet|plala|dion|home|gol|bbiq|asahi-net)\\.(?:ne\\.)?jp$",
+      "\\.yournet\\.ne\\.jp$"
+    ]
+  },
+  {
+    "id": "isp.vodafone.fixed.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.92,
+    "patterns": [
+      "\\.rev\\.vodafone\\.pt$",
+      "\\.pools\\.vodafone-ip\\.de$"
+    ]
+  },
+  {
+    "id": "isp.vodafone.fixed.broadband",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.88,
+    "patterns": [
+      "\\.rev\\.vodafone\\.pt$",
+      "\\.pools\\.vodafone-ip\\.de$"
+    ]
+  },
+  {
+    "id": "isp.latam.mobile",
+    "category": "access",
+    "label": "mobile",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.telecel\\.com\\.py$",
+      "\\.bam\\.movistar\\.cl$",
+      "\\.imovil\\.entelpcs\\.cl$",
+      "\\.user3g\\.veloxzone\\.com\\.br$"
+    ]
+  },
+  {
+    "id": "isp.latam.mobile.customer",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.91,
+    "patterns": [
+      "\\.telecel\\.com\\.py$",
+      "\\.bam\\.movistar\\.cl$",
+      "\\.imovil\\.entelpcs\\.cl$",
+      "\\.user3g\\.veloxzone\\.com\\.br$"
+    ]
+  },
+  {
+    "id": "isp.gvt.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.91,
+    "patterns": [
+      "\\.(?:static|dynamic\\.adsl|static\\.host)\\.gvt\\.net\\.br$"
+    ]
+  },
+  {
+    "id": "isp.gvt.adsl",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.dynamic\\.adsl\\.gvt\\.net\\.br$"
+    ]
+  },
+  {
+    "id": "isp.telia.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.91,
+    "patterns": [
+      "-no[0-9]+\\.tbcn\\.telia\\.com$"
+    ]
+  },
+  {
+    "id": "isp.telecomitalia.consumer",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.93,
+    "patterns": [
+      "\\.retail\\.telecomitalia\\.it$",
+      "\\.cust\\.dsl\\.teletu\\.it$"
+    ]
+  },
+  {
+    "id": "isp.telecomitalia.dsl",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.92,
+    "patterns": [
+      "\\.retail\\.telecomitalia\\.it$",
+      "\\.cust\\.dsl\\.teletu\\.it$"
+    ]
+  },
+  {
+    "id": "isp.talktalk.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.as13285\\.net$"
+    ]
+  },
+  {
+    "id": "isp.optus.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.optusnet\\.com\\.au$"
+    ]
+  },
+  {
+    "id": "isp.tpgi.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.93,
+    "patterns": [
+      "\\.tpgi\\.com\\.au$"
+    ]
+  },
+  {
+    "id": "isp.shaw.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.97,
+    "patterns": [
+      "^s[0-9a-f]+\\.[^.]+\\.shawcable\\.net$"
+    ]
+  },
+  {
+    "id": "isp.shaw.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.94,
+    "patterns": [
+      "^s[0-9a-f]+\\.[^.]+\\.shawcable\\.net$"
+    ]
+  },
+  {
+    "id": "isp.netcabo.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.cpe\\.netcabo\\.pt$"
+    ]
+  },
+  {
+    "id": "isp.netcabo.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.93,
+    "patterns": [
+      "\\.cpe\\.netcabo\\.pt$"
+    ]
+  },
+  {
+    "id": "isp.comcast.business",
+    "category": "access",
+    "label": "business",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.hfc\\.comcastbusiness\\.net$"
+    ]
+  },
+  {
+    "id": "isp.comcast.business.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.hfc\\.comcastbusiness\\.net$"
+    ]
+  },
+  {
+    "id": "hosting.contabo",
+    "category": "hosting",
+    "label": "hosting",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.contaboserver\\.net$",
+      "\\.choopa\\.net$",
+      "\\.dedicated\\.hosteurope\\.de$"
+    ]
+  },
+  {
+    "id": "hosting.contabo.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.contaboserver\\.net$",
+      "\\.choopa\\.net$",
+      "\\.dedicated\\.hosteurope\\.de$"
+    ]
   }
 ]
