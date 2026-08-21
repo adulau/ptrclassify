@@ -1616,5 +1616,230 @@
       "\\.business\\.telecomitalia\\.it$",
       "\\.hfc\\.comcastbusiness\\.net$"
     ]
+  },
+  {
+    "id": "isp.requested.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.91,
+    "patterns": [
+      "\\.hkcable\\.com\\.hk$",
+      "\\.cellcom\\.com$",
+      "\\.prima\\.com\\.ar$",
+      "\\.da\\.net\\.tw$",
+      "\\.commufa\\.jp$",
+      "\\.centurytel\\.net$",
+      "\\.user3p\\.(?:v-tal|veloxzone)\\.net\\.br$",
+      "\\.rocketnet\\.space$",
+      "\\.seed\\.net\\.tw$",
+      "\\.teol\\.net$",
+      "\\.ctbctelecom\\.com\\.br$",
+      "\\.mrse\\.com\\.ar$",
+      "\\.oct-net\\.ne\\.jp$",
+      "\\.unsi\\.net$",
+      "\\.embarqhsd\\.net$",
+      "\\.tisp\\.(?:static\\.)?tds\\.net$",
+      "\\.abo\\.bbox\\.fr$",
+      "\\.pyur\\.net$",
+      "\\.iinet\\.net\\.au$",
+      "\\.bigpond\\.net\\.au$",
+      "\\.revdns\\.pacificinternet\\.com$",
+      "\\.dynamic\\.ttnet\\.com\\.tr$",
+      "\\.static\\.ctl\\.one$",
+      "\\.dynamic\\.ip\\.windstream\\.net$",
+      "\\.telecom\\.net\\.ar$",
+      "\\.btopenworld\\.com$",
+      "\\.bredband\\.tele2\\.se$",
+      "\\.broad\\.[^.]+\\.[^.]+\\.dynamic\\.163data\\.com\\.cn$",
+      "\\.dynamic\\.midco\\.net$",
+      "\\.etisalat\\.com\\.eg$",
+      "\\.access\\.telenet\\.be$",
+      "\\.chinamobile\\.com$",
+      "\\.sify\\.net$",
+      "\\.dynamic\\.[^.]+\\.ertelecom\\.ru$",
+      "\\.fastwebnet\\.it$",
+      "\\.adsl\\.fetnet\\.net$",
+      "\\.unknown\\.starhub\\.net\\.sg$",
+      "\\.epm\\.net\\.co$",
+      "\\.clienti\\.tiscali\\.it$",
+      "\\.customer\\.mediateknik\\.net$"
+    ]
+  },
+  {
+    "id": "isp.requested.broadband",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.88,
+    "patterns": [
+      "\\.hkcable\\.com\\.hk$",
+      "\\.cellcom\\.com$",
+      "\\.prima\\.com\\.ar$",
+      "\\.da\\.net\\.tw$",
+      "\\.qwest\\.net$",
+      "\\.centurytel\\.net$",
+      "\\.user3p\\.(?:v-tal|veloxzone)\\.net\\.br$",
+      "\\.rocketnet\\.space$",
+      "\\.ctbctelecom\\.com\\.br$",
+      "\\.unsi\\.net$",
+      "\\.embarqhsd\\.net$",
+      "\\.tisp\\.(?:static\\.)?tds\\.net$",
+      "\\.abo\\.bbox\\.fr$",
+      "\\.pyur\\.net$",
+      "\\.iinet\\.net\\.au$",
+      "\\.bigpond\\.net\\.au$",
+      "\\.revdns\\.pacificinternet\\.com$",
+      "\\.static\\.ctl\\.one$",
+      "\\.dynamic\\.ip\\.windstream\\.net$",
+      "\\.telecom\\.net\\.ar$",
+      "\\.btopenworld\\.com$",
+      "\\.bredband\\.tele2\\.se$",
+      "\\.dynamic\\.midco\\.net$",
+      "\\.access\\.telenet\\.be$",
+      "\\.chinamobile\\.com$",
+      "\\.sify\\.net$",
+      "\\.fastwebnet\\.it$",
+      "\\.unknown\\.starhub\\.net\\.sg$",
+      "\\.epm\\.net\\.co$"
+    ]
+  },
+  {
+    "id": "isp.requested.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.hkcable\\.com\\.hk$",
+      "\\.cab\\.prima\\.com\\.ar$",
+      "\\.pyur\\.net$",
+      "\\.virtua\\.com\\.br$",
+      "\\.dynamic\\.midco\\.net$",
+      "\\.access\\.telenet\\.be$"
+    ]
+  },
+  {
+    "id": "isp.requested.dsl",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.home\\.otenet\\.gr$",
+      "\\.dyn\\.centurytel\\.net$",
+      "\\.dip\\d*\\.t-ipconnect\\.de$",
+      "\\.dhcp\\.embarqhsd\\.net$",
+      "\\.dynamic\\.ttnet\\.com\\.tr$",
+      "\\.business\\.telecomitalia\\.it$",
+      "\\.adsl-pool\\.[^.]+\\.cn$",
+      "\\.dsl\\.pool\\.telekom\\.hu$",
+      "\\.btopenworld\\.com$",
+      "\\.adsl\\.fetnet\\.net$",
+      "\\.fastwebnet\\.it$",
+      "\\.clienti\\.tiscali\\.it$"
+    ]
+  },
+  {
+    "id": "isp.requested.fiber",
+    "category": "access",
+    "label": "fiber",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.commufa\\.jp$",
+      "\\.ftth\\.glasoperator\\.nl$",
+      "\\.fo\\.baf\\.movistar\\.cl$"
+    ]
+  },
+  {
+    "id": "isp.requested.mobile",
+    "category": "access",
+    "label": "mobile",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.mobile\\.3\\.dk$",
+      "\\.wireless\\.dyn\\.drei\\.com$",
+      "\\.fo\\.baf\\.movistar\\.cl$",
+      "\\.genericrev\\.telcel\\.net\\.ve$",
+      "\\.isp\\.ooredoo\\.om$",
+      "\\.air\\.mopera\\.net$",
+      "\\.hspa\\.orange\\.md$",
+      "\\.vnet\\.bo$",
+      "\\.isp\\.timbrasil\\.com\\.br$",
+      "\\.bamovil-.*\\.une\\.net\\.co$"
+    ]
+  },
+  {
+    "id": "isp.requested.mobile.customer",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.9,
+    "patterns": [
+      "\\.mobile\\.3\\.dk$",
+      "\\.wireless\\.dyn\\.drei\\.com$",
+      "\\.genericrev\\.telcel\\.net\\.ve$",
+      "\\.isp\\.ooredoo\\.om$",
+      "\\.air\\.mopera\\.net$",
+      "\\.hspa\\.orange\\.md$",
+      "\\.vnet\\.bo$",
+      "\\.isp\\.timbrasil\\.com\\.br$",
+      "\\.bamovil-.*\\.une\\.net\\.co$"
+    ]
+  },
+  {
+    "id": "isp.requested.business",
+    "category": "access",
+    "label": "business",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.business\\.telecomitalia\\.it$",
+      "\\.biz\\.spectrum\\.com$",
+      "\\.comcastbusiness\\.net$"
+    ]
+  },
+  {
+    "id": "role.requested.cpe",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.94,
+    "patterns": [
+      "^cpe[-.]",
+      "\\.cpe\\.",
+      "\\.customer\\.",
+      "\\.user(?:3p)?\\.",
+      "\\.subs\\.proxad\\.net$"
+    ]
+  },
+  {
+    "id": "hosting.requested.mail",
+    "category": "hosting",
+    "label": "hosting",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.lnmailer\\.net$",
+      "\\.psmanaged\\.com$",
+      "\\.bulkhost\\.",
+      "\\.dedicated\\.static\\.tds\\.net$"
+    ]
+  },
+  {
+    "id": "hosting.requested.mail.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.9,
+    "patterns": [
+      "\\.lnmailer\\.net$",
+      "\\.psmanaged\\.com$",
+      "\\.bulkhost\\.",
+      "\\.dedicated\\.static\\.tds\\.net$"
+    ]
+  },
+  {
+    "id": "role.requested.mail-server",
+    "category": "role",
+    "label": "server",
+    "confidence": 0.96,
+    "patterns": [
+      "^mta[-.]",
+      "^owa\\.",
+      "^websvr",
+      "^egress-"
+    ]
   }
 ]

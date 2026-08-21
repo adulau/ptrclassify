@@ -212,3 +212,29 @@ def test_additional_hosting_domain_rules(hostname):
 )
 def test_new_operator_cloud_datacenter_and_cdn_rules(hostname, expected):
     assert expected <= {label.label for label in classify(hostname)}
+
+
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
+        ("cm125-59-176-66.hkcable.com.hk", {"residential", "cable"}),
+        ("14-133-116-213.area7c.commufa.jp", {"residential", "fiber"}),
+        ("176-137-80-68.abo.bbox.fr", {"residential", "broadband"}),
+        ("cpe-110-147-24-50.bpbn-r-032.cht.nsw.bigpond.net.au", {"residential", "broadband", "customer"}),
+        ("host81-139-234-82.in-addr.btopenworld.com", {"residential", "broadband"}),
+        ("d8D860B54.access.telenet.be", {"residential", "cable"}),
+        ("220-235-88-7.dyn.iinet.net.au", {"residential", "broadband", "dynamic"}),
+        ("85.103.149.119.dynamic.ttnet.com.tr", {"residential", "dsl", "dynamic"}),
+        ("b5d53bb8.virtua.com.br", {"residential", "broadband", "cable"}),
+        ("109.58.95.218.mobile.3.dk", {"mobile", "customer"}),
+        ("77.119.13.156.wireless.dyn.drei.com", {"mobile", "customer", "dynamic"}),
+        ("host-82-104-78-219.business.telecomitalia.it", {"business", "dsl"}),
+        ("ec2-16-140-70-10.ap-southeast-4.compute.amazonaws.com", {"cloud", "datacenter", "virtual-machine", "amazon-aws"}),
+        ("oc-129-148-242-116.compute.oraclecloud.com", {"cloud", "datacenter", "virtual-machine", "oracle-cloud"}),
+        ("server-3-162-174-12.ord56.r.cloudfront.net", {"cdn", "datacenter", "amazon-cloudfront"}),
+        ("a23-62-5-235.deploy.static.akamaitechnologies.com", {"cdn", "datacenter", "akamai"}),
+        ("mta-225.fi2.lnmailer.net", {"hosting", "datacenter", "server"}),
+    ],
+)
+def test_requested_operator_hosting_and_cdn_templates(hostname, expected):
+    assert expected <= {label.label for label in classify(hostname)}
