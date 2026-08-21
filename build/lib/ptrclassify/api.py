@@ -14,7 +14,7 @@ class LookupRequest(BaseModel):
 
     records: list[str] = Field(
         ...,
-        min_length=1,
+        min_items=1,
         description="One or more PTR hostnames or complete DNS PTR records.",
         examples=[
             [
