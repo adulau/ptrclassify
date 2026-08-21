@@ -108,9 +108,9 @@ class PTRClassifier:
 
     @staticmethod
     def _add_conflict_hints(result: Classification) -> None:
-        values = set(result.values())
+        values = {(label.category, label.label) for label in result.labels}
         conflicts = []
-        if {"allocation:dynamic", "allocation:static"} <= values:
+        if {("allocation", "dynamic"), ("allocation", "static")} <= values:
             conflicts.append("allocation:dynamic vs allocation:static")
         if conflicts:
             result.hints["conflicts"] = conflicts

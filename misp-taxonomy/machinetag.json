@@ -1,0 +1,110 @@
+{
+  "namespace": "ptrclassify",
+  "description": "Explainable classifications inferred from reverse-DNS PTR hostnames.",
+  "version": 1,
+  "predicates": [
+    {"value": "allocation", "expanded": "Address allocation"},
+    {"value": "access", "expanded": "Access network"},
+    {"value": "translation", "expanded": "Address translation"},
+    {"value": "role", "expanded": "Host or network role"},
+    {"value": "hosting", "expanded": "Hosting environment"},
+    {"value": "network", "expanded": "Network characteristic"},
+    {"value": "organization", "expanded": "Organization type"},
+    {"value": "provider", "expanded": "Service provider"},
+    {"value": "naming", "expanded": "PTR naming characteristic"},
+    {"value": "dns", "expanded": "DNS record characteristic"}
+  ],
+  "values": [
+    {
+      "predicate": "allocation",
+      "entry": [
+        {"value": "dynamic", "expanded": "Address appears dynamically assigned or drawn from a pool."},
+        {"value": "static", "expanded": "Hostname explicitly indicates static or fixed assignment."},
+        {"value": "reserved", "expanded": "Hostname indicates reserved or unused address space."}
+      ]
+    },
+    {
+      "predicate": "access",
+      "entry": [
+        {"value": "residential", "expanded": "Residential or consumer access network."},
+        {"value": "business", "expanded": "Business or enterprise access circuit."},
+        {"value": "mobile", "expanded": "Mobile or cellular access."},
+        {"value": "cable", "expanded": "Cable or HFC access network."},
+        {"value": "dsl", "expanded": "DSL or xDSL access network."},
+        {"value": "fiber", "expanded": "Fiber or FTTH access network."},
+        {"value": "wireless", "expanded": "Wi-Fi, WLAN, or fixed-wireless access."},
+        {"value": "broadband", "expanded": "Generic broadband access when the medium is unclear."},
+        {"value": "dialup-ppp", "expanded": "PPP or dial-like subscriber addressing."}
+      ]
+    },
+    {
+      "predicate": "translation",
+      "entry": [
+        {"value": "nat", "expanded": "Address naming explicitly indicates NAT."},
+        {"value": "cgnat", "expanded": "Address naming explicitly indicates carrier-grade or shared NAT."}
+      ]
+    },
+    {
+      "predicate": "role",
+      "entry": [
+        {"value": "customer", "expanded": "Customer or subscriber endpoint naming."},
+        {"value": "router", "expanded": "Router or network forwarding infrastructure."},
+        {"value": "broadband-aggregation", "expanded": "BRAS, BNG, or access aggregation infrastructure."},
+        {"value": "loopback-interface", "expanded": "Router or network-device loopback interface."},
+        {"value": "server", "expanded": "Server or service host naming."},
+        {"value": "virtual-machine", "expanded": "Virtual-machine or compute instance naming."},
+        {"value": "vpn", "expanded": "VPN endpoint or gateway naming."},
+        {"value": "voip", "expanded": "Voice-over-IP infrastructure or service."},
+        {"value": "eduroam", "expanded": "eduroam wireless client or network context."}
+      ]
+    },
+    {
+      "predicate": "hosting",
+      "entry": [
+        {"value": "cloud", "expanded": "Public cloud compute infrastructure."},
+        {"value": "datacenter", "expanded": "Datacenter or hosting infrastructure."},
+        {"value": "hosting", "expanded": "Web, VPS, or hosting-provider infrastructure."},
+        {"value": "cdn", "expanded": "Content delivery network edge or server."}
+      ]
+    },
+    {
+      "predicate": "network",
+      "entry": [
+        {"value": "anycast", "expanded": "Anycast service addressing."},
+        {"value": "dedicated-internet", "expanded": "Dedicated Internet Access circuit."}
+      ]
+    },
+    {
+      "predicate": "organization",
+      "entry": [
+        {"value": "education", "expanded": "Educational or research organization namespace."},
+        {"value": "government", "expanded": "Government namespace."},
+        {"value": "military", "expanded": "Military namespace."},
+        {"value": "enterprise", "expanded": "Named enterprise or corporate namespace."}
+      ]
+    },
+    {
+      "predicate": "provider",
+      "entry": [
+        {"value": "amazon-aws", "expanded": "Amazon Web Services."},
+        {"value": "amazon-cloudfront", "expanded": "Amazon CloudFront."},
+        {"value": "google-cloud", "expanded": "Google Cloud."},
+        {"value": "oracle-cloud", "expanded": "Oracle Cloud."},
+        {"value": "akamai", "expanded": "Akamai."}
+      ]
+    },
+    {
+      "predicate": "naming",
+      "entry": [
+        {"value": "ip-encoded", "expanded": "Hostname embeds the IP address or a direct textual transform of it."},
+        {"value": "generic-reverse", "expanded": "Generic provider-generated reverse name with little host semantics."}
+      ]
+    },
+    {
+      "predicate": "dns",
+      "entry": [
+        {"value": "cname", "expanded": "Input is a CNAME in reverse DNS rather than the final PTR target."}
+      ]
+    }
+  ]
+}
