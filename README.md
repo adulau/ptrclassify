@@ -6,15 +6,15 @@ It is intentionally **heuristic and multi-label**. PTR naming is operator-contro
 
 Examples of orthogonal labels:
 
-- `allocation:dynamic`, `allocation:static`, `allocation:reserved`
-- `access:residential`, `access:business`, `access:mobile`, `access:cable`, `access:dsl`, `access:fiber`, `access:wireless`, `access:broadband`
-- `translation:nat`, `translation:cgnat`
-- `role:customer`, `role:router`, `role:broadband-aggregation`, `role:loopback-interface`, `role:virtual-machine`, `role:vpn`, `role:voip`
-- `hosting:cloud`, `hosting:datacenter`, `hosting:hosting`, `hosting:cdn`
-- `network:anycast`, `network:dedicated-internet`
-- `organization:education`, `organization:government`, `organization:military`
-- `provider:amazon-aws`, `provider:google-cloud`, `provider:oracle-cloud`, `provider:akamai`, ...
-- `naming:ip-encoded`, `naming:generic-reverse`
+- `ptrclassify:allocation="dynamic"`, `ptrclassify:allocation="static"`, `ptrclassify:allocation="reserved"`
+- `ptrclassify:access="residential"`, `ptrclassify:access="business"`, `ptrclassify:access="mobile"`, ...
+- `ptrclassify:translation="nat"`, `ptrclassify:translation="cgnat"`
+- `ptrclassify:role="customer"`, `ptrclassify:role="router"`, `ptrclassify:role="broadband-aggregation"`, ...
+- `ptrclassify:hosting="cloud"`, `ptrclassify:hosting="datacenter"`, `ptrclassify:hosting="hosting"`, `ptrclassify:hosting="cdn"`
+- `ptrclassify:network="anycast"`, `ptrclassify:network="dedicated-internet"`
+- `ptrclassify:organization="education"`, `ptrclassify:organization="government"`, `ptrclassify:organization="military"`
+- `ptrclassify:provider="amazon-aws"`, `ptrclassify:provider="google-cloud"`, ...
+- `ptrclassify:naming="ip-encoded"`, `ptrclassify:naming="generic-reverse"`
 
 ## Install
 
@@ -48,9 +48,9 @@ print(result.to_dict())
 Expected high-confidence labels include:
 
 ```text
-allocation:dynamic
-access:mobile
-translation:nat
+ptrclassify:allocation="dynamic"
+ptrclassify:access="mobile"
+ptrclassify:translation="nat"
 ```
 
 ## CLI
@@ -120,5 +120,7 @@ For production enrichment, PTR classification is best combined with ASN/RDAP, BG
 - RFC 8501, *Reverse DNS in IPv6 for Internet Service Providers*: discusses static, dynamic and dynamically generated reverse names and warns against over-interpreting PTR data.
 - CAIDA Hoiho / ITDK: learns operator-specific regular expressions from router hostnames for infrastructure/geolocation inference; this project borrows the explainable-regex philosophy for a different taxonomy.
 - AWS EC2 public hostname documentation: documents the `ec2-A-B-C-D.<region>.compute.amazonaws.com` form used by the provider-specific rules.
+
+The classifier emits labels in MISP machine-tag form (`ptrclassify:predicate="value"`). A MISP taxonomy definition suitable for validation or import is provided in `misp-taxonomy/machinetag.json`.
 
 The built-in taxonomy is not claimed to be an Internet standard. It is designed as a practical, extensible CTI/network-enrichment taxonomy with orthogonal namespaces instead of a single mutually-exclusive class.

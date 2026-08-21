@@ -13,7 +13,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("-f", "--file", help="Read one PTR/DNS record per line ('-' for stdin)")
     parser.add_argument("--json", action="store_true", help="Output one JSON object per input")
     parser.add_argument("--min-confidence", type=float, default=0.0, help="Only show labels at or above this confidence")
-    parser.add_argument("--values-only", action="store_true", help="Print only category:label values")
+    parser.add_argument("--values-only", action="store_true", help="Print only MISP machine-tag values")
     return parser
 
 

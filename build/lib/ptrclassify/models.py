@@ -15,7 +15,8 @@ class Label:
 
     @property
     def value(self) -> str:
-        return f"{self.category}:{self.label}"
+        """Return the label as a MISP machine tag."""
+        return f'ptrclassify:{self.category}="{self.label}"'
 
     def to_dict(self) -> dict[str, Any]:
         out = asdict(self)
