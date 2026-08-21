@@ -121,12 +121,7 @@ def test_misp_taxonomy_covers_every_classifier_label():
     }
 
     rules_path = (
-        Path(__file__).parents[1]
-        / "build"
-        / "lib"
-        / "ptrclassify"
-        / "data"
-        / "rules.json"
+        Path(__file__).parents[1] / "ptrclassify" / "data" / "rules.json"
     )
     rules = json.loads(rules_path.read_text())
     generated = {("naming", "ip-encoded"), ("naming", "generic-reverse"), ("dns", "cname")}
