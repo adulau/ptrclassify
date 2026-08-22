@@ -1,0 +1,81 @@
+[
+  {
+    "id": "location.verizon-fios.metro",
+    "description": "Verizon FiOS metro/state token; operator-scoped to avoid treating arbitrary short labels as city codes.",
+    "confidence": 0.9,
+    "pattern": "\\.(?P<code>washdc|nycmny|phlapa|bstnma)\\.fios\\.verizon\\.net$",
+    "locations": {
+      "washdc": {"city": "Washington", "region": "District of Columbia", "country": "US"},
+      "nycmny": {"city": "New York", "region": "New York", "country": "US"},
+      "phlapa": {"city": "Philadelphia", "region": "Pennsylvania", "country": "US"},
+      "bstnma": {"city": "Boston", "region": "Massachusetts", "country": "US"}
+    }
+  },
+  {
+    "id": "location.att-lightspeed.metro",
+    "description": "AT&T/SBC Lightspeed metro/state token.",
+    "confidence": 0.9,
+    "pattern": "\\.lightspeed\\.(?P<code>miamfl|hstntx|sntcca|chcgil|dllstx)\\.sbcglobal\\.net$",
+    "locations": {
+      "miamfl": {"city": "Miami", "region": "Florida", "country": "US"},
+      "hstntx": {"city": "Houston", "region": "Texas", "country": "US"},
+      "sntcca": {"city": "Santa Clara", "region": "California", "country": "US"},
+      "chcgil": {"city": "Chicago", "region": "Illinois", "country": "US"},
+      "dllstx": {"city": "Dallas", "region": "Texas", "country": "US"}
+    }
+  },
+  {
+    "id": "location.comcast.region",
+    "description": "US state abbreviation in Comcast residential reverse naming.",
+    "confidence": 0.82,
+    "pattern": "\\.hsd1\\.(?P<code>ca|co|fl|ga|il|ma|md|nj|pa|tx|va|wa)\\.comcast\\.net$",
+    "locations": {
+      "ca": {"region": "California", "country": "US"},
+      "co": {"region": "Colorado", "country": "US"},
+      "fl": {"region": "Florida", "country": "US"},
+      "ga": {"region": "Georgia", "country": "US"},
+      "il": {"region": "Illinois", "country": "US"},
+      "ma": {"region": "Massachusetts", "country": "US"},
+      "md": {"region": "Maryland", "country": "US"},
+      "nj": {"region": "New Jersey", "country": "US"},
+      "pa": {"region": "Pennsylvania", "country": "US"},
+      "tx": {"region": "Texas", "country": "US"},
+      "va": {"region": "Virginia", "country": "US"},
+      "wa": {"region": "Washington", "country": "US"}
+    }
+  },
+  {
+    "id": "location.amazon-cloudfront.pop",
+    "description": "IATA-like metro prefix in an Amazon CloudFront point-of-presence token.",
+    "confidence": 0.94,
+    "pattern": "\\.(?P<code>ord|iad|lhr|fra|dub|nrt|sin|syd|gru)[0-9]+\\.r\\.cloudfront\\.net$",
+    "locations": {
+      "ord": {"city": "Chicago", "region": "Illinois", "country": "US"},
+      "iad": {"city": "Ashburn", "region": "Virginia", "country": "US"},
+      "lhr": {"city": "London", "country": "GB"},
+      "fra": {"city": "Frankfurt", "country": "DE"},
+      "dub": {"city": "Dublin", "country": "IE"},
+      "nrt": {"city": "Tokyo", "country": "JP"},
+      "sin": {"city": "Singapore", "country": "SG"},
+      "syd": {"city": "Sydney", "region": "New South Wales", "country": "AU"},
+      "gru": {"city": "São Paulo", "country": "BR"}
+    }
+  },
+  {
+    "id": "location.australia.access-region",
+    "description": "Australian state/territory token in Optus or Telstra access naming.",
+    "confidence": 0.84,
+    "pattern": "\\.(?P<code>nsw|qld|nqld|vic|sa|wa|tas|act|nt)(?:\\.[^.]+)?\\.(?:optusnet\\.com\\.au|asp\\.telstra\\.net)$",
+    "locations": {
+      "nsw": {"region": "New South Wales", "country": "AU"},
+      "qld": {"region": "Queensland", "country": "AU"},
+      "nqld": {"region": "Queensland", "country": "AU"},
+      "vic": {"region": "Victoria", "country": "AU"},
+      "sa": {"region": "South Australia", "country": "AU"},
+      "wa": {"region": "Western Australia", "country": "AU"},
+      "tas": {"region": "Tasmania", "country": "AU"},
+      "act": {"region": "Australian Capital Territory", "country": "AU"},
+      "nt": {"region": "Northern Territory", "country": "AU"}
+    }
+  }
+]

@@ -77,6 +77,55 @@ def test_aws_ec2():
     assert c.hints["cloud_region"] == "us-east-2"
 
 
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
+        (
+            "pool-74-96-220-47.washdc.fios.verizon.net",
+            {"code": "washdc", "city": "Washington", "country": "US"},
+        ),
+        (
+            "45-18-251-200.lightspeed.miamfl.sbcglobal.net",
+            {"code": "miamfl", "city": "Miami", "region": "Florida"},
+        ),
+        (
+            "server-3-162-174-12.ord56.r.cloudfront.net",
+            {"code": "ord", "city": "Chicago", "country": "US"},
+        ),
+        (
+            "n58-104-225-87.mrk2.qld.optusnet.com.au",
+            {"code": "qld", "region": "Queensland", "country": "AU"},
+        ),
+    ],
+)
+def test_operator_scoped_location_extraction(hostname, expected):
+    result = PTRClassifier().classify(hostname)
+    assert result.locations
+    serialized = result.to_dict()["locations"][0]
+    assert expected.items() <= serialized.items()
+    assert serialized["evidence"]
+    assert serialized["rule_id"].startswith("location.")
+
+
+def test_location_tokens_are_not_interpreted_outside_operator_template():
+    result = PTRClassifier().classify("ord56.example.net")
+    assert result.locations == []
+
+
+def test_private_location_rules_are_extensible():
+    classifier = PTRClassifier(extra_location_rules=[{
+        "id": "location.example.site",
+        "confidence": 0.97,
+        "pattern": r"\.(?P<code>hq)\.example\.net$",
+        "locations": {
+            "hq": {"city": "Example City", "country": "ZZ"},
+        },
+    }])
+    location = classifier.classify("router.hq.example.net").locations[0]
+    assert location.city == "Example City"
+    assert location.confidence == 0.97
+
+
 def test_router_loopback():
     got = values("lo0-0.mrsnqe30.dk.ip.tdc.net")
     assert {'ptrclassify:role="router"', 'ptrclassify:role="loopback-interface"'} <= got

@@ -37,6 +37,19 @@ class LabelResponse(BaseModel):
     value: str
 
 
+class LocationCandidateResponse(BaseModel):
+    """A possible place decoded from an operator-specific hostname token."""
+
+    code: str
+    confidence: float
+    evidence: str
+    rule_id: str
+    city: str | None = None
+    region: str | None = None
+    country: str | None = None
+    description: str | None = None
+
+
 class ClassificationResponse(BaseModel):
     """Classification of a single submitted PTR record."""
 
@@ -45,6 +58,7 @@ class ClassificationResponse(BaseModel):
     address: str | None = None
     record_type: str | None = None
     labels: list[LabelResponse]
+    locations: list[LocationCandidateResponse]
     hints: dict[str, Any]
 
 

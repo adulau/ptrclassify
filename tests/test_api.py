@@ -25,6 +25,7 @@ def test_lookup_one_or_more_ptr_records():
     assert len(results) == 2
     assert any(label["label"] == "cloud" for label in results[0]["labels"])
     assert any(label["label"] == "mobile" for label in results[1]["labels"])
+    assert results[0]["locations"] == []
 
 
 def test_lookup_requires_at_least_one_record():

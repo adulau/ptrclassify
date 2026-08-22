@@ -9,7 +9,7 @@ import json
 import re
 from typing import Iterable
 
-from .models import Classification, Label
+from .models import Classification, Label, LocationCandidate
 from .parser import PTRRecord, parse_ptr_record
 from .taxonomy import TAXONOMY
 
@@ -25,6 +25,15 @@ class _CompiledRule:
     description: str | None = None
 
 
+@dataclass(frozen=True)
+class _CompiledLocationRule:
+    id: str
+    confidence: float
+    regex: re.Pattern[str]
+    locations: dict[str, dict[str, str]]
+    description: str | None = None
+
+
 class PTRClassifier:
     """Explainable heuristic classifier for PTR hostnames.
 
@@ -33,7 +42,12 @@ class PTRClassifier:
     true at once.
     """
 
-    def __init__(self, extra_rules: Iterable[dict] | None = None, engine: str = "re"):
+    def __init__(
+        self,
+        extra_rules: Iterable[dict] | None = None,
+        engine: str = "re",
+        extra_location_rules: Iterable[dict] | None = None,
+    ):
         """Create a classifier using the standard or Hyperscan regexp engine.
 
         ``engine="hyperscan"`` requires the optional ``hyperscan`` package.  It
@@ -46,6 +60,14 @@ class PTRClassifier:
         if extra_rules:
             raw_rules.extend(extra_rules)
         self.rules = tuple(self._compile_rule(rule) for rule in raw_rules)
+        raw_location_rules = json.loads(
+            files("ptrclassify.data").joinpath("location_rules.json").read_text()
+        )
+        if extra_location_rules:
+            raw_location_rules.extend(extra_location_rules)
+        self.location_rules = tuple(
+            self._compile_location_rule(rule) for rule in raw_location_rules
+        )
         self.engine = engine
         self._hyperscan = self._compile_hyperscan() if engine == "hyperscan" else None
 
@@ -58,6 +80,16 @@ class PTRClassifier:
             confidence=float(rule.get("confidence", 0.8)),
             regexes=tuple(re.compile(pattern, re.IGNORECASE) for pattern in rule["patterns"]),
             patterns=tuple(rule["patterns"]),
+            description=rule.get("description"),
+        )
+
+    @staticmethod
+    def _compile_location_rule(rule: dict) -> _CompiledLocationRule:
+        return _CompiledLocationRule(
+            id=rule["id"],
+            confidence=float(rule.get("confidence", 0.8)),
+            regex=re.compile(rule["pattern"], re.IGNORECASE),
+            locations={key.lower(): value for key, value in rule["locations"].items()},
             description=rule.get("description"),
         )
 
@@ -118,6 +150,7 @@ class PTRClassifier:
 
         self._add_ip_encoded_hint(record, hostname, matched, result)
         self._extract_cloud_hints(hostname, result)
+        self._extract_location_candidates(hostname, result)
         self._add_generic_reverse_hint(hostname, matched)
 
         result.labels = [
@@ -134,6 +167,34 @@ class PTRClassifier:
         result.labels.sort(key=lambda x: (-x.confidence, x.category, x.label))
         self._add_conflict_hints(result)
         return result
+
+    def _extract_location_candidates(
+        self, hostname: str, result: Classification
+    ) -> None:
+        """Apply operator-scoped templates and resolve only curated location codes."""
+        seen: set[tuple[str, str]] = set()
+        for rule in self.location_rules:
+            match = rule.regex.search(hostname)
+            if not match:
+                continue
+            code = match.group("code").lower()
+            location = rule.locations.get(code)
+            if location is None or (rule.id, code) in seen:
+                continue
+            seen.add((rule.id, code))
+            result.locations.append(
+                LocationCandidate(
+                    code=code,
+                    confidence=rule.confidence,
+                    evidence=match.group(0),
+                    rule_id=rule.id,
+                    city=location.get("city"),
+                    region=location.get("region"),
+                    country=location.get("country"),
+                    description=rule.description,
+                )
+            )
+        result.locations.sort(key=lambda item: (-item.confidence, item.rule_id, item.code))
 
     def _matches(self, hostname: str):
         if self._hyperscan is None:
