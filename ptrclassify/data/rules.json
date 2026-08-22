@@ -1841,5 +1841,50 @@
       "^websvr",
       "^egress-"
     ]
+  },
+  {
+    "id": "cloud.azure.cloud",
+    "category": "hosting",
+    "label": "cloud",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.cloudapp\\.azure\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.azure.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.cloudapp\\.azure\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.azure.vm",
+    "category": "role",
+    "label": "virtual-machine",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.cloudapp\\.azure\\.com$"
+    ]
+  },
+  {
+    "id": "cdn.fastly.cdn",
+    "category": "hosting",
+    "label": "cdn",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.fastly\\.net$"
+    ]
+  },
+  {
+    "id": "cdn.fastly.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.fastly\\.net$"
+    ]
   }
 ]

@@ -5,10 +5,26 @@
     "confidence": 0.9,
     "pattern": "\\.(?P<code>washdc|nycmny|phlapa|bstnma)\\.fios\\.verizon\\.net$",
     "locations": {
-      "washdc": {"city": "Washington", "region": "District of Columbia", "country": "US"},
-      "nycmny": {"city": "New York", "region": "New York", "country": "US"},
-      "phlapa": {"city": "Philadelphia", "region": "Pennsylvania", "country": "US"},
-      "bstnma": {"city": "Boston", "region": "Massachusetts", "country": "US"}
+      "washdc": {
+        "city": "Washington",
+        "region": "District of Columbia",
+        "country": "US"
+      },
+      "nycmny": {
+        "city": "New York",
+        "region": "New York",
+        "country": "US"
+      },
+      "phlapa": {
+        "city": "Philadelphia",
+        "region": "Pennsylvania",
+        "country": "US"
+      },
+      "bstnma": {
+        "city": "Boston",
+        "region": "Massachusetts",
+        "country": "US"
+      }
     }
   },
   {
@@ -17,11 +33,31 @@
     "confidence": 0.9,
     "pattern": "\\.lightspeed\\.(?P<code>miamfl|hstntx|sntcca|chcgil|dllstx)\\.sbcglobal\\.net$",
     "locations": {
-      "miamfl": {"city": "Miami", "region": "Florida", "country": "US"},
-      "hstntx": {"city": "Houston", "region": "Texas", "country": "US"},
-      "sntcca": {"city": "Santa Clara", "region": "California", "country": "US"},
-      "chcgil": {"city": "Chicago", "region": "Illinois", "country": "US"},
-      "dllstx": {"city": "Dallas", "region": "Texas", "country": "US"}
+      "miamfl": {
+        "city": "Miami",
+        "region": "Florida",
+        "country": "US"
+      },
+      "hstntx": {
+        "city": "Houston",
+        "region": "Texas",
+        "country": "US"
+      },
+      "sntcca": {
+        "city": "Santa Clara",
+        "region": "California",
+        "country": "US"
+      },
+      "chcgil": {
+        "city": "Chicago",
+        "region": "Illinois",
+        "country": "US"
+      },
+      "dllstx": {
+        "city": "Dallas",
+        "region": "Texas",
+        "country": "US"
+      }
     }
   },
   {
@@ -30,35 +66,179 @@
     "confidence": 0.82,
     "pattern": "\\.hsd1\\.(?P<code>ca|co|fl|ga|il|ma|md|nj|pa|tx|va|wa)\\.comcast\\.net$",
     "locations": {
-      "ca": {"region": "California", "country": "US"},
-      "co": {"region": "Colorado", "country": "US"},
-      "fl": {"region": "Florida", "country": "US"},
-      "ga": {"region": "Georgia", "country": "US"},
-      "il": {"region": "Illinois", "country": "US"},
-      "ma": {"region": "Massachusetts", "country": "US"},
-      "md": {"region": "Maryland", "country": "US"},
-      "nj": {"region": "New Jersey", "country": "US"},
-      "pa": {"region": "Pennsylvania", "country": "US"},
-      "tx": {"region": "Texas", "country": "US"},
-      "va": {"region": "Virginia", "country": "US"},
-      "wa": {"region": "Washington", "country": "US"}
+      "ca": {
+        "region": "California",
+        "country": "US"
+      },
+      "co": {
+        "region": "Colorado",
+        "country": "US"
+      },
+      "fl": {
+        "region": "Florida",
+        "country": "US"
+      },
+      "ga": {
+        "region": "Georgia",
+        "country": "US"
+      },
+      "il": {
+        "region": "Illinois",
+        "country": "US"
+      },
+      "ma": {
+        "region": "Massachusetts",
+        "country": "US"
+      },
+      "md": {
+        "region": "Maryland",
+        "country": "US"
+      },
+      "nj": {
+        "region": "New Jersey",
+        "country": "US"
+      },
+      "pa": {
+        "region": "Pennsylvania",
+        "country": "US"
+      },
+      "tx": {
+        "region": "Texas",
+        "country": "US"
+      },
+      "va": {
+        "region": "Virginia",
+        "country": "US"
+      },
+      "wa": {
+        "region": "Washington",
+        "country": "US"
+      }
     }
   },
   {
     "id": "location.amazon-cloudfront.pop",
     "description": "IATA-like metro prefix in an Amazon CloudFront point-of-presence token.",
     "confidence": 0.94,
-    "pattern": "\\.(?P<code>ord|iad|lhr|fra|dub|nrt|sin|syd|gru)[0-9]+\\.r\\.cloudfront\\.net$",
+    "pattern": "\\.(?P<code>ams|arn|atl|bom|bos|cdg|dfw|dub|fra|gru|hkg|iad|icn|jfk|lax|lhr|mad|mia|nrt|ord|sea|sin|syd|yul|yyz|zrh)[0-9]+\\.r\\.cloudfront\\.net$",
     "locations": {
-      "ord": {"city": "Chicago", "region": "Illinois", "country": "US"},
-      "iad": {"city": "Ashburn", "region": "Virginia", "country": "US"},
-      "lhr": {"city": "London", "country": "GB"},
-      "fra": {"city": "Frankfurt", "country": "DE"},
-      "dub": {"city": "Dublin", "country": "IE"},
-      "nrt": {"city": "Tokyo", "country": "JP"},
-      "sin": {"city": "Singapore", "country": "SG"},
-      "syd": {"city": "Sydney", "region": "New South Wales", "country": "AU"},
-      "gru": {"city": "São Paulo", "country": "BR"}
+      "ord": {
+        "city": "Chicago",
+        "region": "Illinois",
+        "country": "US"
+      },
+      "iad": {
+        "city": "Ashburn",
+        "region": "Virginia",
+        "country": "US"
+      },
+      "lhr": {
+        "city": "London",
+        "country": "GB"
+      },
+      "fra": {
+        "city": "Frankfurt",
+        "country": "DE"
+      },
+      "dub": {
+        "city": "Dublin",
+        "country": "IE"
+      },
+      "nrt": {
+        "city": "Tokyo",
+        "country": "JP"
+      },
+      "sin": {
+        "city": "Singapore",
+        "country": "SG"
+      },
+      "syd": {
+        "city": "Sydney",
+        "region": "New South Wales",
+        "country": "AU"
+      },
+      "gru": {
+        "city": "São Paulo",
+        "country": "BR"
+      },
+      "ams": {
+        "city": "Amsterdam",
+        "country": "NL"
+      },
+      "arn": {
+        "city": "Stockholm",
+        "country": "SE"
+      },
+      "atl": {
+        "city": "Atlanta",
+        "region": "Georgia",
+        "country": "US"
+      },
+      "bom": {
+        "city": "Mumbai",
+        "region": "Maharashtra",
+        "country": "IN"
+      },
+      "bos": {
+        "city": "Boston",
+        "region": "Massachusetts",
+        "country": "US"
+      },
+      "cdg": {
+        "city": "Paris",
+        "country": "FR"
+      },
+      "dfw": {
+        "city": "Dallas",
+        "region": "Texas",
+        "country": "US"
+      },
+      "hkg": {
+        "city": "Hong Kong",
+        "country": "HK"
+      },
+      "icn": {
+        "city": "Seoul",
+        "country": "KR"
+      },
+      "jfk": {
+        "city": "New York",
+        "region": "New York",
+        "country": "US"
+      },
+      "lax": {
+        "city": "Los Angeles",
+        "region": "California",
+        "country": "US"
+      },
+      "mad": {
+        "city": "Madrid",
+        "country": "ES"
+      },
+      "mia": {
+        "city": "Miami",
+        "region": "Florida",
+        "country": "US"
+      },
+      "sea": {
+        "city": "Seattle",
+        "region": "Washington",
+        "country": "US"
+      },
+      "yul": {
+        "city": "Montreal",
+        "region": "Quebec",
+        "country": "CA"
+      },
+      "yyz": {
+        "city": "Toronto",
+        "region": "Ontario",
+        "country": "CA"
+      },
+      "zrh": {
+        "city": "Zurich",
+        "country": "CH"
+      }
     }
   },
   {
@@ -67,15 +247,239 @@
     "confidence": 0.84,
     "pattern": "\\.(?P<code>nsw|qld|nqld|vic|sa|wa|tas|act|nt)(?:\\.[^.]+)?\\.(?:optusnet\\.com\\.au|asp\\.telstra\\.net)$",
     "locations": {
-      "nsw": {"region": "New South Wales", "country": "AU"},
-      "qld": {"region": "Queensland", "country": "AU"},
-      "nqld": {"region": "Queensland", "country": "AU"},
-      "vic": {"region": "Victoria", "country": "AU"},
-      "sa": {"region": "South Australia", "country": "AU"},
-      "wa": {"region": "Western Australia", "country": "AU"},
-      "tas": {"region": "Tasmania", "country": "AU"},
-      "act": {"region": "Australian Capital Territory", "country": "AU"},
-      "nt": {"region": "Northern Territory", "country": "AU"}
+      "nsw": {
+        "region": "New South Wales",
+        "country": "AU"
+      },
+      "qld": {
+        "region": "Queensland",
+        "country": "AU"
+      },
+      "nqld": {
+        "region": "Queensland",
+        "country": "AU"
+      },
+      "vic": {
+        "region": "Victoria",
+        "country": "AU"
+      },
+      "sa": {
+        "region": "South Australia",
+        "country": "AU"
+      },
+      "wa": {
+        "region": "Western Australia",
+        "country": "AU"
+      },
+      "tas": {
+        "region": "Tasmania",
+        "country": "AU"
+      },
+      "act": {
+        "region": "Australian Capital Territory",
+        "country": "AU"
+      },
+      "nt": {
+        "region": "Northern Territory",
+        "country": "AU"
+      }
+    }
+  },
+  {
+    "id": "location.amazon-ec2.region",
+    "description": "AWS region encoded in an EC2-generated reverse hostname; identifies the hosting region, not a precise server location.",
+    "confidence": 0.97,
+    "pattern": "\\.(?P<code>us-east-1|us-east-2|us-west-1|us-west-2|ca-central-1|eu-west-1|eu-west-2|eu-west-3|eu-central-1|eu-north-1|ap-south-1|ap-northeast-1|ap-northeast-2|ap-southeast-1|ap-southeast-2|ap-southeast-4|sa-east-1)\\.compute(?:-[0-9]+)?\\.amazonaws\\.com$",
+    "locations": {
+      "us-east-1": {
+        "region": "Northern Virginia",
+        "country": "US"
+      },
+      "us-east-2": {
+        "region": "Ohio",
+        "country": "US"
+      },
+      "us-west-1": {
+        "region": "Northern California",
+        "country": "US"
+      },
+      "us-west-2": {
+        "region": "Oregon",
+        "country": "US"
+      },
+      "ca-central-1": {
+        "region": "Central Canada",
+        "country": "CA"
+      },
+      "eu-west-1": {
+        "region": "Ireland",
+        "country": "IE"
+      },
+      "eu-west-2": {
+        "city": "London",
+        "country": "GB"
+      },
+      "eu-west-3": {
+        "city": "Paris",
+        "country": "FR"
+      },
+      "eu-central-1": {
+        "city": "Frankfurt",
+        "country": "DE"
+      },
+      "eu-north-1": {
+        "city": "Stockholm",
+        "country": "SE"
+      },
+      "ap-south-1": {
+        "city": "Mumbai",
+        "region": "Maharashtra",
+        "country": "IN"
+      },
+      "ap-northeast-1": {
+        "city": "Tokyo",
+        "country": "JP"
+      },
+      "ap-northeast-2": {
+        "city": "Seoul",
+        "country": "KR"
+      },
+      "ap-southeast-1": {
+        "city": "Singapore",
+        "country": "SG"
+      },
+      "ap-southeast-2": {
+        "city": "Sydney",
+        "region": "New South Wales",
+        "country": "AU"
+      },
+      "ap-southeast-4": {
+        "city": "Melbourne",
+        "region": "Victoria",
+        "country": "AU"
+      },
+      "sa-east-1": {
+        "city": "São Paulo",
+        "country": "BR"
+      }
+    }
+  },
+  {
+    "id": "location.microsoft-azure.region",
+    "description": "Azure region encoded in a cloudapp.azure.com reverse hostname; identifies the cloud deployment region.",
+    "confidence": 0.97,
+    "pattern": "\\.(?P<code>eastus|eastus2|westus|westus2|westus3|centralus|northcentralus|southcentralus|canadacentral|canadaeast|brazilsouth|northeurope|westeurope|uksouth|ukwest|francecentral|germanywestcentral|switzerlandnorth|swedencentral|japaneast|japanwest|koreacentral|southeastasia|eastasia|centralindia|australiaeast|australiasoutheast)\\.cloudapp\\.azure\\.com$",
+    "locations": {
+      "eastus": {
+        "region": "Virginia",
+        "country": "US"
+      },
+      "eastus2": {
+        "region": "Virginia",
+        "country": "US"
+      },
+      "westus": {
+        "region": "California",
+        "country": "US"
+      },
+      "westus2": {
+        "region": "Washington",
+        "country": "US"
+      },
+      "westus3": {
+        "region": "Arizona",
+        "country": "US"
+      },
+      "centralus": {
+        "region": "Iowa",
+        "country": "US"
+      },
+      "northcentralus": {
+        "region": "Illinois",
+        "country": "US"
+      },
+      "southcentralus": {
+        "region": "Texas",
+        "country": "US"
+      },
+      "canadacentral": {
+        "city": "Toronto",
+        "region": "Ontario",
+        "country": "CA"
+      },
+      "canadaeast": {
+        "city": "Quebec City",
+        "region": "Quebec",
+        "country": "CA"
+      },
+      "brazilsouth": {
+        "city": "São Paulo",
+        "country": "BR"
+      },
+      "northeurope": {
+        "region": "Ireland",
+        "country": "IE"
+      },
+      "westeurope": {
+        "country": "NL"
+      },
+      "uksouth": {
+        "city": "London",
+        "country": "GB"
+      },
+      "ukwest": {
+        "city": "Cardiff",
+        "country": "GB"
+      },
+      "francecentral": {
+        "city": "Paris",
+        "country": "FR"
+      },
+      "germanywestcentral": {
+        "city": "Frankfurt",
+        "country": "DE"
+      },
+      "switzerlandnorth": {
+        "city": "Zurich",
+        "country": "CH"
+      },
+      "swedencentral": {
+        "city": "Gävle",
+        "country": "SE"
+      },
+      "japaneast": {
+        "city": "Tokyo",
+        "country": "JP"
+      },
+      "japanwest": {
+        "city": "Osaka",
+        "country": "JP"
+      },
+      "koreacentral": {
+        "city": "Seoul",
+        "country": "KR"
+      },
+      "southeastasia": {
+        "city": "Singapore",
+        "country": "SG"
+      },
+      "eastasia": {
+        "city": "Hong Kong",
+        "country": "HK"
+      },
+      "centralindia": {
+        "city": "Pune",
+        "region": "Maharashtra",
+        "country": "IN"
+      },
+      "australiaeast": {
+        "region": "New South Wales",
+        "country": "AU"
+      },
+      "australiasoutheast": {
+        "region": "Victoria",
+        "country": "AU"
+      }
     }
   }
 ]

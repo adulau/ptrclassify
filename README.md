@@ -166,6 +166,12 @@ deliberately scoped to an operator suffix: a token such as `ord56` on an
 unrelated domain is not treated as Chicago.  Private conventions can be added
 with `extra_location_rules`:
 
+The built-in infrastructure templates include AWS EC2 region names, Azure
+`cloudapp.azure.com` regions, and a curated set of Amazon CloudFront POP codes.
+These complement the access-network templates and make the location candidate
+useful for CDN and datacenter PTRs without treating generic IATA-like labels as
+locations.
+
 ```python
 classifier = PTRClassifier(extra_location_rules=[{
     "id": "location.example.site",
