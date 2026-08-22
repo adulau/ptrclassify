@@ -26,6 +26,23 @@ class Label:
         return out
 
 
+@dataclass(frozen=True)
+class LocationCandidate:
+    """A possible geographic location decoded from an operator naming convention."""
+
+    code: str
+    confidence: float
+    evidence: str
+    rule_id: str
+    city: str | None = None
+    region: str | None = None
+    country: str | None = None
+    description: str | None = None
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
 @dataclass
 class Classification:
     input: str
@@ -33,6 +50,7 @@ class Classification:
     address: str | None = None
     record_type: str | None = None
     labels: list[Label] = field(default_factory=list)
+    locations: list[LocationCandidate] = field(default_factory=list)
     hints: dict[str, Any] = field(default_factory=dict)
 
     def values(self) -> list[str]:
@@ -45,5 +63,6 @@ class Classification:
             "address": self.address,
             "record_type": self.record_type,
             "labels": [label.to_dict() for label in self.labels],
+            "locations": [location.to_dict() for location in self.locations],
             "hints": self.hints,
         }

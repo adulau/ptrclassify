@@ -81,6 +81,8 @@ result = classifier.classify(
 )
 print(result.values())
 print(result.to_dict())
+for location in result.locations:
+    print(location.city, location.region, location.country, location.confidence)
 ```
 
 Expected high-confidence labels include:
@@ -145,6 +147,40 @@ classifier = PTRClassifier(extra_rules=[{
 }])
 ```
 
+## Potential location extraction
+
+The classifier can also decode a conservative set of operator-specific
+geographic tokens.  Candidates are separate from taxonomy labels because a
+place is open-ended data rather than a classification category:
+
+```python
+result = PTRClassifier().classify("pool-74-96-220-47.washdc.fios.verizon.net")
+print(result.locations[0].to_dict())
+# {'code': 'washdc', 'city': 'Washington', ..., 'confidence': 0.9}
+```
+
+Each candidate includes the original code, matched evidence, confidence and
+rule ID as well as any decoded city, region and ISO 3166-1 alpha-2 country.
+Built-in templates live in `ptrclassify/data/location_rules.json`.  They are
+deliberately scoped to an operator suffix: a token such as `ord56` on an
+unrelated domain is not treated as Chicago.  Private conventions can be added
+with `extra_location_rules`:
+
+```python
+classifier = PTRClassifier(extra_location_rules=[{
+    "id": "location.example.site",
+    "confidence": 0.95,
+    "pattern": r"\.(?P<code>hq)\.example\.net$",
+    "locations": {"hq": {"city": "Example City", "country": "ZZ"}},
+}])
+```
+
+This follows the explainable, domain-specific rule strategy used by hostname
+geolocation systems: extract tokens in the context of a network's naming
+convention, then resolve them through a curated code dictionary.  A candidate
+describes where the operator says the named device or service belongs; it must
+not be interpreted as the subscriber's exact location or as a measurement.
+
 ## Benchmark
 
 After installing the optional dependency, compare steady-state lookup time on
@@ -169,7 +205,8 @@ For production enrichment, PTR classification is best combined with ASN/RDAP, BG
 ## References / prior art
 
 - RFC 8501, *Reverse DNS in IPv6 for Internet Service Providers*: discusses static, dynamic and dynamically generated reverse names and warns against over-interpreting PTR data.
-- CAIDA Hoiho / ITDK: learns operator-specific regular expressions from router hostnames for infrastructure/geolocation inference; this project borrows the explainable-regex philosophy for a different taxonomy.
+- [CAIDA Hoiho](https://www.caida.org/catalog/software/hoiho/) / ITDK: learns operator-specific regular expressions from router hostnames for infrastructure/geolocation inference; this project borrows its explainable-regex philosophy.
+- [DRoP](https://doi.org/10.1145/2398776.2398790), *DNS-based Router Positioning*: prior work on extracting and validating router location hints from hostnames.
 - AWS EC2 public hostname documentation: documents the `ec2-A-B-C-D.<region>.compute.amazonaws.com` form used by the provider-specific rules.
 
 The classifier emits labels in MISP machine-tag form (`ptrclassify:predicate="value"`). A MISP taxonomy definition suitable for validation or import is provided in `misp-taxonomy/machinetag.json`.
