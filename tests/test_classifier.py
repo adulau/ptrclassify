@@ -112,6 +112,48 @@ def test_location_tokens_are_not_interpreted_outside_operator_template():
     assert result.locations == []
 
 
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
+        (
+            "ec2-3-151-166-120.us-east-2.compute.amazonaws.com",
+            {"code": "us-east-2", "region": "Ohio", "country": "US"},
+        ),
+        (
+            "ec2-16-140-70-10.ap-southeast-4.compute.amazonaws.com",
+            {"code": "ap-southeast-4", "city": "Melbourne", "country": "AU"},
+        ),
+        (
+            "example-prod.westeurope.cloudapp.azure.com",
+            {"code": "westeurope", "country": "NL"},
+        ),
+        (
+            "example-prod.canadacentral.cloudapp.azure.com",
+            {"code": "canadacentral", "city": "Toronto", "country": "CA"},
+        ),
+        (
+            "server-1-2-3-4.yyz50.r.cloudfront.net",
+            {"code": "yyz", "city": "Toronto", "country": "CA"},
+        ),
+    ],
+)
+def test_cloud_and_datacenter_location_extraction(hostname, expected):
+    locations = PTRClassifier().classify(hostname).to_dict()["locations"]
+    assert locations
+    assert expected.items() <= locations[0].items()
+
+
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
+        ("example-prod.westeurope.cloudapp.azure.com", {"cloud", "datacenter", "virtual-machine"}),
+        ("cache.example.fastly.net", {"cdn", "datacenter"}),
+    ],
+)
+def test_additional_cloud_and_cdn_infrastructure_rules(hostname, expected):
+    assert expected <= {label.label for label in classify(hostname)}
+
+
 def test_private_location_rules_are_extensible():
     classifier = PTRClassifier(extra_location_rules=[{
         "id": "location.example.site",
