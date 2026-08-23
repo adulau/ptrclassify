@@ -218,7 +218,8 @@ For production enrichment, PTR classification is best combined with ASN/RDAP, BG
 - [DRoP](https://doi.org/10.1145/2398776.2398790), *DNS-based Router Positioning*: prior work on extracting and validating router location hints from hostnames.
 - AWS EC2 public hostname documentation: documents the `ec2-A-B-C-D.<region>.compute.amazonaws.com` form used by the provider-specific rules.
 
-The classifier emits labels in MISP machine-tag form (`ptrclassify:predicate="value"`). A MISP taxonomy definition suitable for validation or import is provided in `misp-taxonomy/machinetag.json`.
+The classifier emits labels in MISP machine-tag form (`ptrclassify:predicate="value"`). A MISP taxonomy definition suitable for validation or import is provided in `misp-taxonomy/machinetag.json` and
+[officially published as a MISP taxonomy](https://misp-project.org/taxonomies.html#_ptrclassify).
 
 The built-in taxonomy is not claimed to be an Internet standard. It is designed as a practical, extensible CTI/network-enrichment taxonomy with orthogonal namespaces instead of a single mutually-exclusive class.
 
