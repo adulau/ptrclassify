@@ -1886,5 +1886,25 @@
     "patterns": [
       "\\.fastly\\.net$"
     ]
+  },
+  {
+    "id": "role.router.hurricane-electric",
+    "category": "role",
+    "label": "router",
+    "confidence": 0.99,
+    "description": "Hurricane Electric backbone router naming with an interface/core token and operator suffix.",
+    "patterns": [
+      "(?:^|\\.)(?:[a-z0-9-]+\\.)?(?:core|edge|agg)\\d+\\.[a-z]{3}\\d+\\.he\\.net$"
+    ]
+  },
+  {
+    "id": "role.router.cogent",
+    "category": "role",
+    "label": "router",
+    "confidence": 0.99,
+    "description": "Cogent backbone router naming under the operator-specific atlas.cogentco.com suffix.",
+    "patterns": [
+      "(?:^|\\.)(?:be|te|gi|xe|ae)[a-z0-9-]*\\.ccr\\d+\\.[a-z]{3}\\d+\\.atlas\\.cogentco\\.com$"
+    ]
   }
 ]

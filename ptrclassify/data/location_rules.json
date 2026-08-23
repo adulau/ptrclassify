@@ -481,5 +481,171 @@
         "country": "AU"
       }
     }
+  },
+  {
+    "id": "location.hurricane-electric.pop",
+    "description": "Hurricane Electric backbone POP token. This identifies the named router site, not the IP user or an exact physical position.",
+    "confidence": 0.91,
+    "pattern": "\\.(?:core|edge|agg)[0-9]+\\.(?P<code>ams|atl|chi|dal|den|fra|iad|lax|lhr|mia|nyc|par|sea|sjc|syd|tok)[0-9]+\\.he\\.net$",
+    "locations": {
+      "ams": {
+        "city": "Amsterdam",
+        "country": "NL"
+      },
+      "atl": {
+        "city": "Atlanta",
+        "region": "Georgia",
+        "country": "US"
+      },
+      "chi": {
+        "city": "Chicago",
+        "region": "Illinois",
+        "country": "US"
+      },
+      "dal": {
+        "city": "Dallas",
+        "region": "Texas",
+        "country": "US"
+      },
+      "den": {
+        "city": "Denver",
+        "region": "Colorado",
+        "country": "US"
+      },
+      "fra": {
+        "city": "Frankfurt",
+        "country": "DE"
+      },
+      "iad": {
+        "city": "Ashburn",
+        "region": "Virginia",
+        "country": "US"
+      },
+      "lax": {
+        "city": "Los Angeles",
+        "region": "California",
+        "country": "US"
+      },
+      "lhr": {
+        "city": "London",
+        "country": "GB"
+      },
+      "mia": {
+        "city": "Miami",
+        "region": "Florida",
+        "country": "US"
+      },
+      "nyc": {
+        "city": "New York",
+        "region": "New York",
+        "country": "US"
+      },
+      "par": {
+        "city": "Paris",
+        "country": "FR"
+      },
+      "sea": {
+        "city": "Seattle",
+        "region": "Washington",
+        "country": "US"
+      },
+      "sjc": {
+        "city": "San Jose",
+        "region": "California",
+        "country": "US"
+      },
+      "syd": {
+        "city": "Sydney",
+        "region": "New South Wales",
+        "country": "AU"
+      },
+      "tok": {
+        "city": "Tokyo",
+        "country": "JP"
+      }
+    }
+  },
+  {
+    "id": "location.cogent.pop",
+    "description": "Cogent atlas backbone POP token. This identifies the named router site, not the IP user or an exact physical position.",
+    "confidence": 0.91,
+    "pattern": "\\.ccr[0-9]+\\.(?P<code>ams|atl|chi|dal|den|fra|iad|lax|lhr|mia|nyc|par|sea|sjc|syd|tok)[0-9]+\\.atlas\\.cogentco\\.com$",
+    "locations": {
+      "ams": {
+        "city": "Amsterdam",
+        "country": "NL"
+      },
+      "atl": {
+        "city": "Atlanta",
+        "region": "Georgia",
+        "country": "US"
+      },
+      "chi": {
+        "city": "Chicago",
+        "region": "Illinois",
+        "country": "US"
+      },
+      "dal": {
+        "city": "Dallas",
+        "region": "Texas",
+        "country": "US"
+      },
+      "den": {
+        "city": "Denver",
+        "region": "Colorado",
+        "country": "US"
+      },
+      "fra": {
+        "city": "Frankfurt",
+        "country": "DE"
+      },
+      "iad": {
+        "city": "Ashburn",
+        "region": "Virginia",
+        "country": "US"
+      },
+      "lax": {
+        "city": "Los Angeles",
+        "region": "California",
+        "country": "US"
+      },
+      "lhr": {
+        "city": "London",
+        "country": "GB"
+      },
+      "mia": {
+        "city": "Miami",
+        "region": "Florida",
+        "country": "US"
+      },
+      "nyc": {
+        "city": "New York",
+        "region": "New York",
+        "country": "US"
+      },
+      "par": {
+        "city": "Paris",
+        "country": "FR"
+      },
+      "sea": {
+        "city": "Seattle",
+        "region": "Washington",
+        "country": "US"
+      },
+      "sjc": {
+        "city": "San Jose",
+        "region": "California",
+        "country": "US"
+      },
+      "syd": {
+        "city": "Sydney",
+        "region": "New South Wales",
+        "country": "AU"
+      },
+      "tok": {
+        "city": "Tokyo",
+        "country": "JP"
+      }
+    }
   }
 ]

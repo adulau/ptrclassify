@@ -362,3 +362,38 @@ def test_new_operator_cloud_datacenter_and_cdn_rules(hostname, expected):
 )
 def test_requested_operator_hosting_and_cdn_templates(hostname, expected):
     assert expected <= {label.label for label in classify(hostname)}
+
+
+@pytest.mark.parametrize(
+    ("hostname", "expected_location", "expected_rule"),
+    [
+        (
+            "100ge0-36.core2.lax2.he.net",
+            {"code": "lax", "city": "Los Angeles", "country": "US"},
+            "location.hurricane-electric.pop",
+        ),
+        (
+            "be3360.ccr42.lax01.atlas.cogentco.com",
+            {"code": "lax", "city": "Los Angeles", "country": "US"},
+            "location.cogent.pop",
+        ),
+        (
+            "be2317.ccr32.sjc04.atlas.cogentco.com",
+            {"code": "sjc", "city": "San Jose", "country": "US"},
+            "location.cogent.pop",
+        ),
+    ],
+)
+def test_backbone_router_pop_location_and_use(hostname, expected_location, expected_rule):
+    result = PTRClassifier().classify(hostname)
+    assert 'ptrclassify:role="router"' in result.values()
+    assert result.locations
+    location = result.locations[0].to_dict()
+    assert expected_location.items() <= location.items()
+    assert location["rule_id"] == expected_rule
+
+
+def test_backbone_pop_codes_are_operator_scoped():
+    result = PTRClassifier().classify("core2.lax2.example.net")
+    assert result.locations == []
+    assert 'ptrclassify:role="router"' not in result.values()
