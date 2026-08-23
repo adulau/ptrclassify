@@ -70,7 +70,7 @@ class LookupResponse(BaseModel):
 
 app = FastAPI(
     title="ptrclassify API",
-    version="0.1.0",
+    version="0.2.0",
     description=(
         "Explainable heuristic classification for reverse-DNS PTR hostnames. "
         "PTR names are operator-controlled, so results are inferences rather than facts."

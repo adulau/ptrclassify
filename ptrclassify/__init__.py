@@ -12,4 +12,4 @@ __all__ = [
     "parse_ptr_record",
 ]
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
