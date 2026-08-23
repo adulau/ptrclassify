@@ -183,7 +183,9 @@ classifier = PTRClassifier(extra_location_rules=[{
 
 This follows the explainable, domain-specific rule strategy used by hostname
 geolocation systems: extract tokens in the context of a network's naming
-convention, then resolve them through a curated code dictionary.  A candidate
+convention, then resolve them through a curated code dictionary.  Backbone router templates for Hurricane Electric and Cogent apply
+the same approach to operator-scoped POP codes (for example, `lax2` and
+`lax01`).  A candidate
 describes where the operator says the named device or service belongs; it must
 not be interpreted as the subscriber's exact location or as a measurement.
 
@@ -211,6 +213,7 @@ For production enrichment, PTR classification is best combined with ASN/RDAP, BG
 ## References / prior art
 
 - RFC 8501, *Reverse DNS in IPv6 for Internet Service Providers*: discusses static, dynamic and dynamically generated reverse names and warns against over-interpreting PTR data.
+- [IETF IP Geolocation Workshop materials](https://datatracker.ietf.org/group/ipgeows/materials/): workshop context for treating network-provided location signals as scoped, fallible hints rather than ground truth.
 - [CAIDA Hoiho](https://www.caida.org/catalog/software/hoiho/) / ITDK: learns operator-specific regular expressions from router hostnames for infrastructure/geolocation inference; this project borrows its explainable-regex philosophy.
 - [DRoP](https://doi.org/10.1145/2398776.2398790), *DNS-based Router Positioning*: prior work on extracting and validating router location hints from hostnames.
 - AWS EC2 public hostname documentation: documents the `ec2-A-B-C-D.<region>.compute.amazonaws.com` form used by the provider-specific rules.
