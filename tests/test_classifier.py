@@ -442,3 +442,31 @@ def test_backbone_pop_codes_are_operator_scoped():
 )
 def test_observed_operator_templates(hostname, expected):
     assert expected <= {label.label for label in classify(hostname)}
+
+
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
+        ("188-206-112-135.mobile.kpn.net", {"mobile", "customer"}),
+        ("248.109.69.86.rev.sfr.net", {"residential", "broadband"}),
+        ("KD106170040172.au-net.ne.jp", {"residential", "broadband"}),
+        ("h248.26.191.173.dynamic.ip.windstream.net", {"dynamic", "dsl"}),
+        ("adsl-89-217-236-172.adslplus.ch", {"residential", "dsl"}),
+        ("122-121-119-37.dynamic-ip.hinet.net", {"residential", "broadband"}),
+        ("39.76.140.163.rev.iijmobile.jp", {"mobile", "customer"}),
+        ("87-92-12-80.bb.dnainternet.fi", {"residential", "broadband"}),
+        ("181-23-243-221.speedy.com.ar", {"residential", "broadband"}),
+        ("ac019067.dynamic.ppp.asahi-net.or.jp", {"dynamic", "residential", "customer", "dialup-ppp"}),
+        ("ipbcc32f2e.dynamic.kabel-deutschland.de", {"dynamic", "residential", "cable"}),
+        ("net-93-71-178-238.cust.vodafonedsl.it", {"residential", "dsl", "customer"}),
+        ("m90-141-140-116.cust.tele2.se", {"residential", "broadband", "customer"}),
+        ("d24-150-23-131.home.cgocable.net", {"residential", "cable"}),
+        ("50-116-38-102.ip.linodeusercontent.com", {"linode", "cloud", "datacenter", "virtual-machine"}),
+        ("63-227-183-235.dia.static.qwest.net", {"static", "dedicated-internet", "business"}),
+        ("121.242.7.41.static-pune.vsnl.net.in", {"static", "business"}),
+        ("204.14.167.96.static.integritynet.com", {"static", "business"}),
+        ("pc-49-13-160-190.cm.vtr.net", {"residential", "cable"}),
+    ],
+)
+def test_2026_isp_and_cloud_templates(hostname, expected):
+    assert expected <= {label.label for label in classify(hostname)}

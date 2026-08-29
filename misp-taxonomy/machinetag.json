@@ -93,7 +93,8 @@
         {"value": "akamai", "expanded": "Akamai."},
         {"value": "huawei-cloud", "expanded": "Huawei Cloud."},
         {"value": "vultr", "expanded": "Vultr cloud infrastructure."},
-        {"value": "hetzner", "expanded": "Hetzner hosting infrastructure."}
+        {"value": "hetzner", "expanded": "Hetzner hosting infrastructure."},
+        {"value": "linode", "expanded": "Linode (Akamai Connected Cloud)."}
       ]
     },
     {

@@ -2060,5 +2060,168 @@
       "(?:^|\\.)non-routed-un-exposed-ip\\.",
       "\\.early-registration\\.of\\.surfnet\\.invalid$"
     ]
+  },
+  {
+    "id": "isp.subscriber.residential.2026-08",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.94,
+    "description": "Operator-scoped reverse-DNS templates used for consumer fixed-access subscribers.",
+    "patterns": [
+      "\\.rev\\.sfr\\.net$",
+      "\\.au-net\\.ne\\.jp$",
+      "\\.adslplus\\.ch$",
+      "\\.dynamic-ip\\.hinet\\.net$",
+      "\\.bb\\.dnainternet\\.fi$",
+      "\\.speedy\\.com\\.ar$",
+      "\\.dsl\\.orel\\.ru$",
+      "\\.bredband2\\.com$",
+      "\\.uninet(?:-ide)?\\.com\\.mx$",
+      "\\.dynamic\\.ppp\\.asahi-net\\.or\\.jp$",
+      "\\.dynamic\\.kabel-deutschland\\.de$",
+      "\\.cust\\.vodafonedsl\\.it$",
+      "\\.cust\\.tele2\\.se$",
+      "\\.dyn\\.iinet\\.net\\.au$",
+      "\\.bchsia\\.telus\\.net$",
+      "\\.pool\\.telefonica\\.de$",
+      "\\.etisalat\\.com\\.eg$",
+      "\\.copaco\\.com\\.py$",
+      "\\.dynamic\\..*\\.eircom\\.net$",
+      "\\.ipv4\\.supernova\\.orange\\.pl$",
+      "\\.cm\\.vtr\\.net$",
+      "\\.home\\.cgocable\\.net$",
+      "\\.user\\.vivozap\\.com\\.br$",
+      "\\.subs\\.proxad\\.net$",
+      "\\.btc-net\\.bg$",
+      "\\.une\\.net\\.co$",
+      "\\.retail\\.telecomitalia\\.it$",
+      "\\.as13285\\.net$",
+      "\\.ntelecom\\.com\\.br$"
+    ]
+  },
+  {
+    "id": "isp.subscriber.broadband.2026-08",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.91,
+    "description": "Operator-scoped fixed broadband subscriber templates where the physical last-mile medium is not explicit.",
+    "patterns": [
+      "\\.rev\\.sfr\\.net$",
+      "\\.au-net\\.ne\\.jp$",
+      "\\.dynamic-ip\\.hinet\\.net$",
+      "\\.bb\\.dnainternet\\.fi$",
+      "\\.speedy\\.com\\.ar$",
+      "\\.bredband2\\.com$",
+      "\\.uninet(?:-ide)?\\.com\\.mx$",
+      "\\.cust\\.tele2\\.se$",
+      "\\.dyn\\.iinet\\.net\\.au$",
+      "\\.bchsia\\.telus\\.net$",
+      "\\.etisalat\\.com\\.eg$",
+      "\\.copaco\\.com\\.py$",
+      "\\.ipv4\\.supernova\\.orange\\.pl$",
+      "\\.ntelecom\\.com\\.br$"
+    ]
+  },
+  {
+    "id": "isp.subscriber.dsl.2026-08",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.dsl\\.[^.]+\\.ameritech\\.net$",
+      "\\.dynamic\\.ip\\.windstream\\.net$",
+      "\\.adslplus\\.ch$",
+      "\\.dsl\\.[^.]+\\.sbcglobal\\.net$",
+      "\\.lightspeed\\.[^.]+\\.sbcglobal\\.net$",
+      "\\.cust\\.vodafonedsl\\.it$",
+      "\\.adsl-pool\\.[^.]+\\.cn$"
+    ]
+  },
+  {
+    "id": "isp.subscriber.cable.2026-08",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.cpe\\.net\\.cable\\.rogers\\.com$",
+      "\\.home\\.cgocable\\.net$",
+      "\\.dynamic\\.kabel-deutschland\\.de$",
+      "\\.une\\.net\\.co$",
+      "\\.cm\\.vtr\\.net$"
+    ]
+  },
+  {
+    "id": "isp.subscriber.mobile.2026-08",
+    "category": "access",
+    "label": "mobile",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.mobile\\.kpn\\.net$",
+      "\\.rev\\.iijmobile\\.jp$",
+      "\\.myvzw\\.com$",
+      "\\.vivozap\\.com\\.br$"
+    ]
+  },
+  {
+    "id": "isp.subscriber.customer.2026-08",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.92,
+    "patterns": [
+      "\\.mobile\\.kpn\\.net$",
+      "\\.rev\\.iijmobile\\.jp$",
+      "\\.telecel\\.com\\.py$",
+      "\\.uninet(?:-ide)?\\.com\\.mx$",
+      "\\.dynamic\\.ppp\\.asahi-net\\.or\\.jp$",
+      "\\.cust\\.tele2\\.se$",
+      "\\.vivozap\\.com\\.br$"
+    ]
+  },
+  {
+    "id": "isp.business.2026-08",
+    "category": "access",
+    "label": "business",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.dia\\.static\\.qwest\\.net$",
+      "\\.static-[^.]+\\.vsnl\\.net\\.in$",
+      "\\.static\\.integritynet\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.linode.provider",
+    "category": "provider",
+    "label": "linode",
+    "confidence": 1.0,
+    "patterns": [
+      "\\.ip\\.linodeusercontent\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.linode.cloud",
+    "category": "hosting",
+    "label": "cloud",
+    "confidence": 0.99,
+    "patterns": [
+      "\\.ip\\.linodeusercontent\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.linode.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.ip\\.linodeusercontent\\.com$"
+    ]
+  },
+  {
+    "id": "cloud.linode.vm",
+    "category": "role",
+    "label": "virtual-machine",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.ip\\.linodeusercontent\\.com$"
+    ]
   }
 ]
