@@ -421,3 +421,24 @@ def test_backbone_pop_codes_are_operator_scoped():
     result = PTRClassifier().classify("core2.lax2.example.net")
     assert result.locations == []
     assert 'ptrclassify:role="router"' not in result.values()
+
+
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
+        ("mobile-107-239-8-137.mycingular.net", {"mobile", "residential", "customer"}),
+        ("ntakta041220.akta.nt.ngn.ppp.infoweb.ne.jp", {"residential", "broadband", "dsl", "dialup-ppp"}),
+        ("customer-GDL-105-254.megared.net.mx", {"residential", "cable", "customer"}),
+        ("154-174.dsl.iskon.hr", {"residential", "dsl"}),
+        ("83-245-148-191.elisa-laajakaista.fi", {"residential", "broadband"}),
+        ("152-238-227-242.user.vtal.net.br", {"residential", "fiber", "customer"}),
+        ("host-79-50-166-108.retail.telecomitalia.it", {"residential", "dsl"}),
+        ("ool-44c0f074.dyn.optonline.net", {"residential", "cable", "dynamic"}),
+        ("142.0.36.62.16clouds.com", {"hosting", "datacenter"}),
+        ("85-10-137-222.colo.transip.net", {"hosting", "datacenter"}),
+        ("nothing.attdns.com", {"reserved"}),
+        ("145.172.EARLY-REGISTRATION.of.SURFnet.invalid", {"reserved"}),
+    ],
+)
+def test_observed_operator_templates(hostname, expected):
+    assert expected <= {label.label for label in classify(hostname)}
