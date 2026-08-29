@@ -508,3 +508,24 @@ def test_isp_and_hosting_templates_from_august_2026_observations(hostname, expec
 )
 def test_2026_isp_and_cloud_templates(hostname, expected):
     assert expected <= {label.label for label in classify(hostname)}
+
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
+        ("pc-202-55-213-254.cable.kumin.ne.jp", {"residential", "cable"}),
+        ("ip67-93-5-117.z5-93-67.customer.algx.net", {"residential", "broadband", "customer"}),
+        ("173-16-147-203.client.mchsi.com", {"residential", "cable"}),
+        ("5-14-205-140.residential.rdsnet.ro", {"residential"}),
+        ("bzq-84-108-164-220.cablep.bezeqint.net", {"residential", "cable"}),
+        ("239-90-201-46.pool.ukrtel.net", {"dynamic", "residential", "broadband"}),
+        ("123-110-252-88.best.dynamic.tbcnet.net.tw", {"dynamic", "residential", "broadband"}),
+        ("109.85-87-107.dynamic.clientes.euskaltel.es", {"dynamic", "residential"}),
+        ("178.104.11.37.dynamic.jazztel.es", {"dynamic", "residential", "dsl"}),
+        ("198-57-141-197.unifiedlayer.com", {"hosting", "datacenter"}),
+        ("f2.4c.3ca9.ip4.static.sl-reverse.com", {"static", "hosting", "datacenter"}),
+        ("107-175-217-53-host.colocrossing.com", {"hosting", "datacenter"}),
+        ("cj2hosting.nl", {"hosting", "datacenter"}),
+    ],
+)
+def test_ptr_batch_operator_templates(hostname, expected):
+    assert expected <= {label.label for label in classify(hostname)}
