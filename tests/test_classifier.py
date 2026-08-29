@@ -447,6 +447,44 @@ def test_observed_operator_templates(hostname, expected):
 @pytest.mark.parametrize(
     ("hostname", "expected"),
     [
+        ("114-35-107-6.hinet-ip.hinet.net", {"residential", "broadband"}),
+        ("pw126035247087.25.panda-world.ne.jp", {"residential", "broadband"}),
+        ("ti0092a430-1310.bb.online.no", {"residential", "broadband"}),
+        ("user-164-126-14-86.play-internet.pl", {"residential", "broadband", "customer"}),
+        ("193-45-28-28.customer.telia.com", {"residential", "broadband", "customer"}),
+        ("177-103-38-216.dsl.telesp.net.br", {"residential", "dsl"}),
+        ("103-80-121-215.customer.node1.com.au", {"residential", "broadband", "customer"}),
+        ("ip-64-134-165-39.public.wayport.net", {"wireless", "customer"}),
+        ("78-106-113-203.broadband.corbina.ru", {"residential", "broadband"}),
+        ("h95-110-29-134.dyn.bashtel.ru", {"dynamic", "residential", "broadband"}),
+        ("47.125.159.143.dyn.plus.net", {"dynamic", "residential", "broadband"}),
+        ("178235217009.warszawa.vectranet.pl", {"residential", "broadband", "cable"}),
+        ("83.0.74.217.internetdsl.tpnet.pl", {"residential", "dsl"}),
+        ("253.21-180-91.adsl-dyn.isp.belgacom.be", {"dynamic", "residential", "dsl"}),
+        ("061196219030.cidr.odn.ne.jp", {"residential", "broadband"}),
+        ("2-54-222-229.orange.net.il", {"residential", "broadband"}),
+        ("80-197-93-230-cable.dk.customer.tdc.net", {"residential", "cable", "customer"}),
+        ("r167-59-180-237.dialup.adsl.anteldata.net.uy", {"residential", "dsl", "dialup-ppp"}),
+        ("adsl-072-151-053-088.sip.bgk.bellsouth.net", {"residential", "dsl"}),
+        ("h135-134-223-125.nwblwi.broadband.dynamic.tds.net", {"dynamic", "residential", "broadband"}),
+        ("65.220.79.170.in-addr.arpa.verointernet.com.br", {"residential", "broadband"}),
+        ("dsl-corp-42-43.transact.bm", {"business", "dsl"}),
+        ("83-65-72-102.static.upcbusiness.at", {"static", "business", "cable"}),
+        ("ev1s-69-57-129-59.theplanet.com", {"hosting", "datacenter"}),
+        ("105.ip-213-32-70.eu", {"hosting", "datacenter"}),
+        ("n-hp98.vps.webdock.cloud", {"hosting", "datacenter", "virtual-machine"}),
+        ("ip-space.by.proserve.nl", {"hosting", "datacenter"}),
+        ("undefined.hostname.localhost", {"reserved"}),
+        ("no-reverse-dns.metronet-uk.com", {"reserved"}),
+    ],
+)
+def test_isp_and_hosting_templates_from_august_2026_observations(hostname, expected):
+    assert expected <= {label.label for label in classify(hostname)}
+
+
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
         ("188-206-112-135.mobile.kpn.net", {"mobile", "customer"}),
         ("248.109.69.86.rev.sfr.net", {"residential", "broadband"}),
         ("KD106170040172.au-net.ne.jp", {"residential", "broadband"}),
