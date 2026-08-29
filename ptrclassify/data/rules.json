@@ -2401,5 +2401,101 @@
       "^no-reverse-dns\\.",
       "^nothing\\.attdns\\.com$"
     ]
+  },
+  {
+    "id": "isp.ptr-batch.consumer.residential.2026-08",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.93,
+    "description": "Operator-scoped reverse zones used for fixed consumer or subscriber access.",
+    "patterns": [
+      "\\.cable\\.kumin\\.ne\\.jp$",
+      "\\.customer\\.algx\\.net$",
+      "\\.client\\.mchsi\\.com$",
+      "\\.residential\\.rdsnet\\.ro$",
+      "\\.cablep\\.bezeqint\\.net$",
+      "\\.pool\\.ukrtel\\.net$",
+      "\\.best\\.dynamic\\.tbcnet\\.net\\.tw$",
+      "\\.alshamil\\.net\\.ae$",
+      "\\.access-internet\\.ne\\.jp$",
+      "\\.customer\\.lyse\\.net$",
+      "\\.dynamic\\.clientes\\.euskaltel\\.es$",
+      "\\.berlikomm\\.net$",
+      "\\.dynamic\\.jazztel\\.es$",
+      "\\.cantv\\.net$",
+      "\\.abo\\.bbox\\.fr$",
+      "\\.fbx\\.proxad\\.net$",
+      "\\.ftth\\.ucom\\.ne\\.jp$",
+      "\\.cm\\.vtr\\.net$",
+      "\\.cable\\.rogers\\.com$",
+      "\\.static\\.ip\\.windstream\\.net$",
+      "\\.dsl\\.[^.]+\\.sbcglobal\\.net$"
+    ]
+  },
+  {
+    "id": "isp.ptr-batch.consumer.broadband.2026-08",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.88,
+    "patterns": [
+      "\\.customer\\.algx\\.net$",
+      "\\.pool\\.ukrtel\\.net$",
+      "\\.best\\.dynamic\\.tbcnet\\.net\\.tw$",
+      "\\.alshamil\\.net\\.ae$",
+      "\\.access-internet\\.ne\\.jp$",
+      "\\.customer\\.lyse\\.net$",
+      "\\.berlikomm\\.net$",
+      "\\.cantv\\.net$",
+      "\\.fbx\\.proxad\\.net$"
+    ]
+  },
+  {
+    "id": "isp.ptr-batch.consumer.cable.2026-08",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.cable\\.kumin\\.ne\\.jp$",
+      "\\.client\\.mchsi\\.com$",
+      "\\.cablep\\.bezeqint\\.net$",
+      "\\.cable\\.rogers\\.com$",
+      "\\.cm\\.vtr\\.net$"
+    ]
+  },
+  {
+    "id": "isp.ptr-batch.consumer.dsl.2026-08",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.dynamic\\.jazztel\\.es$",
+      "\\.dsl\\.[^.]+\\.sbcglobal\\.net$",
+      "\\.static\\.ip\\.windstream\\.net$"
+    ]
+  },
+  {
+    "id": "hosting.ptr-batch.providers.2026-08",
+    "category": "hosting",
+    "label": "hosting",
+    "confidence": 0.98,
+    "description": "Reverse zone belonging to a public hosting, VPS, or colocation provider.",
+    "patterns": [
+      "\\.static\\.sl-reverse\\.com$",
+      "\\.unifiedlayer\\.com$",
+      "\\.colocrossing\\.com$",
+      "(?:^|\\.)cj2hosting\\.nl$"
+    ]
+  },
+  {
+    "id": "hosting.ptr-batch.providers.dc.2026-08",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.static\\.sl-reverse\\.com$",
+      "\\.unifiedlayer\\.com$",
+      "\\.colocrossing\\.com$",
+      "(?:^|\\.)cj2hosting\\.nl$"
+    ]
   }
 ]
