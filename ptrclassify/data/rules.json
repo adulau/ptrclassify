@@ -1906,5 +1906,159 @@
     "patterns": [
       "(?:^|\\.)(?:be|te|gi|xe|ae)[a-z0-9-]*\\.ccr\\d+\\.[a-z]{3}\\d+\\.atlas\\.cogentco\\.com$"
     ]
+  },
+  {
+    "id": "isp.observed.consumer.residential",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.94,
+    "description": "Operator-specific subscriber reverse-DNS suffixes observed on consumer access networks.",
+    "patterns": [
+      "\\.mycingular\\.net$",
+      "\\.ngn\\.ppp\\.infoweb\\.ne\\.jp$",
+      "\\.vips\\.gol\\.ne\\.jp$",
+      "(?:\\.megared\\.net\\.mx|\\.clientes-izzi\\.mx)$",
+      "\\.dsl\\.iskon\\.hr$",
+      "\\.mesh\\.ad\\.jp$",
+      "\\.online\\.net\\.br$",
+      "\\.cable\\.012\\.net\\.il$",
+      "\\.(?:dynamic|static)ip\\.rima-tde\\.net$",
+      "\\.elisa-laajakaista\\.fi$",
+      "\\.frontiernet\\.net$",
+      "\\.telkomadsl\\.co\\.za$",
+      "\\.rcc\\.o2\\.cz$",
+      "\\.singnet\\.com\\.sg$",
+      "\\.btc-net\\.bg$",
+      "\\.customer\\.vmie\\.ie$",
+      "\\.user\\.vtal\\.net\\.br$",
+      "\\.ap\\.plala\\.or\\.jp$",
+      "\\.pool\\.telefonica\\.de$",
+      "\\.retail\\.telecomitalia\\.it$",
+      "\\.norlyscustomer\\.net$",
+      "\\.dyn\\.optonline\\.net$",
+      "\\.omni\\.lt$",
+      "\\.tcn\\.ne\\.jp$",
+      "\\.fibraconnect\\.com\\.br$",
+      "\\.dynamic\\.itce\\.ru$",
+      "\\.internetia\\.net\\.pl$",
+      "\\.dynamic\\.play\\.pl$",
+      "\\.tdatabrasil\\.net\\.br$",
+      "\\.dynamic\\.surfer\\.at$",
+      "\\.static\\.asianet\\.co\\.th$",
+      "\\.speednetbandalarga\\.net\\.br$",
+      "\\.pool\\.sknt\\.ru$",
+      "\\.cpe\\.teksavvy\\.com$",
+      "\\.hathway\\.com$",
+      "\\.telecom\\.com\\.ar$",
+      "\\.dyn\\.centurytel\\.net$",
+      "\\.dsl\\.[^.]+\\.pacbell\\.net$",
+      "\\.dsl\\.[^.]+\\.swbell\\.net$"
+    ]
+  },
+  {
+    "id": "isp.observed.consumer.broadband",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.9,
+    "patterns": [
+      "\\.ngn\\.ppp\\.infoweb\\.ne\\.jp$",
+      "\\.mesh\\.ad\\.jp$",
+      "\\.online\\.net\\.br$",
+      "\\.elisa-laajakaista\\.fi$",
+      "\\.singnet\\.com\\.sg$",
+      "\\.btc-net\\.bg$",
+      "\\.ap\\.plala\\.or\\.jp$",
+      "\\.norlyscustomer\\.net$",
+      "\\.tcn\\.ne\\.jp$",
+      "\\.hathway\\.com$"
+    ]
+  },
+  {
+    "id": "isp.observed.consumer.cable",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.95,
+    "patterns": [
+      "(?:\\.megared\\.net\\.mx|\\.clientes-izzi\\.mx)$",
+      "\\.cable\\.012\\.net\\.il$",
+      "\\.customer\\.vmie\\.ie$",
+      "\\.dyn\\.optonline\\.net$",
+      "\\.dynamic\\.surfer\\.at$"
+    ]
+  },
+  {
+    "id": "isp.observed.consumer.dsl",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.ngn\\.ppp\\.infoweb\\.ne\\.jp$",
+      "\\.dsl\\.iskon\\.hr$",
+      "\\.telkomadsl\\.co\\.za$",
+      "\\.retail\\.telecomitalia\\.it$",
+      "\\.dyn\\.centurytel\\.net$",
+      "\\.dsl\\.[^.]+\\.pacbell\\.net$",
+      "\\.dsl\\.[^.]+\\.swbell\\.net$"
+    ]
+  },
+  {
+    "id": "isp.observed.consumer.fiber",
+    "category": "access",
+    "label": "fiber",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.user\\.vtal\\.net\\.br$"
+    ]
+  },
+  {
+    "id": "isp.observed.mobile",
+    "category": "access",
+    "label": "mobile",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.mycingular\\.net$"
+    ]
+  },
+  {
+    "id": "isp.observed.mobile.customer",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.92,
+    "patterns": [
+      "\\.mycingular\\.net$"
+    ]
+  },
+  {
+    "id": "hosting.observed.providers",
+    "category": "hosting",
+    "label": "hosting",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.16clouds\\.com$",
+      "\\.ip\\.secureserver\\.net$",
+      "\\.colo\\.transip\\.net$"
+    ]
+  },
+  {
+    "id": "hosting.observed.providers.dc",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.95,
+    "patterns": [
+      "\\.16clouds\\.com$",
+      "\\.ip\\.secureserver\\.net$",
+      "\\.colo\\.transip\\.net$"
+    ]
+  },
+  {
+    "id": "alloc.observed.unusable",
+    "category": "allocation",
+    "label": "reserved",
+    "confidence": 0.98,
+    "patterns": [
+      "^nothing\\.attdns\\.com$",
+      "(?:^|\\.)non-routed-un-exposed-ip\\.",
+      "\\.early-registration\\.of\\.surfnet\\.invalid$"
+    ]
   }
 ]
