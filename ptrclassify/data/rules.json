@@ -105,7 +105,8 @@
     "confidence": 0.96,
     "patterns": [
       "(?:^|[._-])ppp\\d*(?:[._-]|$)",
-      "^ppp\\d"
+      "^ppp\\d",
+      "(?:^|[._-])dialup(?:[._-]|$)"
     ]
   },
   {
@@ -2222,6 +2223,183 @@
     "confidence": 0.96,
     "patterns": [
       "\\.ip\\.linodeusercontent\\.com$"
+    ]
+  },
+  {
+    "id": "isp.fixed.consumer.residential.2026-08",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.9,
+    "description": "Operator-specific reverse zones used for consumer fixed-access subscribers.",
+    "patterns": [
+      "\\.panda-world\\.ne\\.jp$",
+      "\\.bb\\.online\\.no$",
+      "\\.play-internet\\.pl$",
+      "\\.customer\\.telia\\.com$",
+      "\\.dsl\\.telesp\\.net\\.br$",
+      "\\.waus\\.wi\\.frontiernet\\.net$",
+      "\\.customer\\.node1\\.com\\.au$",
+      "\\.broadband\\.corbina\\.ru$",
+      "\\.dyn\\.bashtel\\.ru$",
+      "\\.dyn\\.plus\\.net$",
+      "\\.broad\\.[^.]+\\.[^.]+\\.dynamic\\.163data\\.com\\.cn$",
+      "\\.vectranet\\.pl$",
+      "\\.internetdsl\\.tpnet\\.pl$",
+      "\\.adsl-dyn\\.isp\\.belgacom\\.be$",
+      "\\.dialup\\.adsl\\.anteldata\\.net\\.uy$",
+      "^adsl-.*\\.bellsouth\\.net$",
+      "\\.broadband\\.dynamic\\.tds\\.net$",
+      "\\.in-addr\\.arpa\\.verointernet\\.com\\.br$",
+      "\\.cidr\\.odn\\.ne\\.jp$",
+      "\\.orange\\.net\\.il$",
+      "-cable\\.dk\\.customer\\.tdc\\.net$"
+    ]
+  },
+  {
+    "id": "isp.fixed.consumer.broadband.2026-08b",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.88,
+    "description": "Operator-specific reverse zones used for fixed broadband subscribers.",
+    "patterns": [
+      "\\.hinet-ip\\.hinet\\.net$",
+      "\\.panda-world\\.ne\\.jp$",
+      "\\.bb\\.online\\.no$",
+      "\\.play-internet\\.pl$",
+      "\\.customer\\.telia\\.com$",
+      "\\.customer\\.node1\\.com\\.au$",
+      "\\.access\\.telenet\\.be$",
+      "\\.cpe\\.teksavvy\\.com$",
+      "\\.broadband\\.corbina\\.ru$",
+      "\\.dyn\\.bashtel\\.ru$",
+      "\\.dyn\\.plus\\.net$",
+      "\\.broad\\.[^.]+\\.[^.]+\\.dynamic\\.163data\\.com\\.cn$",
+      "\\.vectranet\\.pl$",
+      "\\.cidr\\.odn\\.ne\\.jp$",
+      "\\.orange\\.net\\.il$",
+      "\\.dialup\\.adsl\\.anteldata\\.net\\.uy$",
+      "^adsl-.*\\.bellsouth\\.net$",
+      "\\.broadband\\.dynamic\\.tds\\.net$",
+      "\\.in-addr\\.arpa\\.verointernet\\.com\\.br$"
+    ]
+  },
+  {
+    "id": "isp.fixed.consumer.dsl.2026-08b",
+    "category": "access",
+    "label": "dsl",
+    "confidence": 0.97,
+    "patterns": [
+      "\\.dsl\\.telesp\\.net\\.br$",
+      "\\.dialup\\.adsl\\.anteldata\\.net\\.uy$",
+      "\\.internetdsl\\.tpnet\\.pl$",
+      "^adsl-.*\\.bellsouth\\.net$",
+      "\\.adsl-dyn\\.isp\\.belgacom\\.be$"
+    ]
+  },
+  {
+    "id": "isp.fixed.consumer.cable.2026-08b",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.access\\.telenet\\.be$",
+      "\\.vectranet\\.pl$",
+      "\\.catv\\.pool\\.telekom\\.hu$",
+      "-cable\\.dk\\.customer\\.tdc\\.net$"
+    ]
+  },
+  {
+    "id": "isp.fixed.consumer.fiber.2026-08",
+    "category": "access",
+    "label": "fiber",
+    "confidence": 0.9,
+    "patterns": [
+      "\\.eonet\\.ne\\.jp$",
+      "\\.ap\\.nuro\\.jp$"
+    ]
+  },
+  {
+    "id": "isp.public-access.wireless.2026-08",
+    "category": "access",
+    "label": "wireless",
+    "confidence": 0.96,
+    "description": "Reverse zone associated with public Wi-Fi access infrastructure.",
+    "patterns": [
+      "\\.public\\.wayport\\.net$"
+    ]
+  },
+  {
+    "id": "isp.public-access.customer.2026-08",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.86,
+    "patterns": [
+      "\\.public\\.wayport\\.net$"
+    ]
+  },
+  {
+    "id": "isp.fixed.business.2026-08b",
+    "category": "access",
+    "label": "business",
+    "confidence": 0.96,
+    "patterns": [
+      "(?:^|\\.)dsl-corp.*\\.transact\\.bm$",
+      "\\.static\\.upcbusiness\\.at$",
+      "\\.customer\\.veroxity\\.net$"
+    ]
+  },
+  {
+    "id": "isp.fixed.business.cable.2026-08",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.93,
+    "patterns": [
+      "\\.static\\.upcbusiness\\.at$"
+    ]
+  },
+  {
+    "id": "hosting.legacy-and-vps.2026-08",
+    "category": "hosting",
+    "label": "hosting",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.theplanet\\.com$",
+      "\\.ip-[0-9-]+\\.eu$",
+      "\\.vps\\.webdock\\.cloud$",
+      "^ip-space\\.by\\.proserve\\.nl$"
+    ]
+  },
+  {
+    "id": "hosting.legacy-and-vps.dc.2026-08",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.94,
+    "patterns": [
+      "\\.theplanet\\.com$",
+      "\\.ip-[0-9-]+\\.eu$",
+      "\\.vps\\.webdock\\.cloud$",
+      "^ip-space\\.by\\.proserve\\.nl$"
+    ]
+  },
+  {
+    "id": "hosting.webdock.vm.2026-08",
+    "category": "role",
+    "label": "virtual-machine",
+    "confidence": 0.98,
+    "patterns": [
+      "\\.vps\\.webdock\\.cloud$"
+    ]
+  },
+  {
+    "id": "alloc.placeholder.2026-08",
+    "category": "allocation",
+    "label": "reserved",
+    "confidence": 0.99,
+    "description": "PTR explicitly indicates that no meaningful reverse hostname is assigned.",
+    "patterns": [
+      "^undefined\\.hostname\\.localhost$",
+      "^no-reverse-dns\\.",
+      "^nothing\\.attdns\\.com$"
     ]
   }
 ]
