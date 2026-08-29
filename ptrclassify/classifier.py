@@ -68,6 +68,9 @@ class PTRClassifier:
         self.location_rules = tuple(
             self._compile_location_rule(rule) for rule in raw_location_rules
         )
+        self.country_tlds = json.loads(
+            files("ptrclassify.data").joinpath("country_tlds.json").read_text()
+        )
         self.engine = engine
         self._hyperscan = self._compile_hyperscan() if engine == "hyperscan" else None
 
@@ -151,6 +154,7 @@ class PTRClassifier:
         self._add_ip_encoded_hint(record, hostname, matched, result)
         self._extract_cloud_hints(hostname, result)
         self._extract_location_candidates(hostname, result)
+        self._extract_tld_country(hostname, result)
         self._add_generic_reverse_hint(hostname, matched)
 
         result.labels = [
@@ -194,6 +198,27 @@ class PTRClassifier:
                     description=rule.description,
                 )
             )
+        result.locations.sort(key=lambda item: (-item.confidence, item.rule_id, item.code))
+
+    def _extract_tld_country(self, hostname: str, result: Classification) -> None:
+        """Add a low-confidence country hint for an ISO country-code TLD."""
+        tld = hostname.rsplit(".", 1)[-1]
+        country = self.country_tlds.get(tld)
+        if country is None:
+            return
+        result.locations.append(
+            LocationCandidate(
+                code=tld,
+                confidence=0.65,
+                evidence=f".{tld}",
+                rule_id="location.country-code-tld",
+                country=country,
+                description=(
+                    "Country associated with the PTR hostname's country-code TLD; "
+                    "the host itself may be located elsewhere."
+                ),
+            )
+        )
         result.locations.sort(key=lambda item: (-item.confidence, item.rule_id, item.code))
 
     def _matches(self, hostname: str):

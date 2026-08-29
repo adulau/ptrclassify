@@ -161,6 +161,10 @@ print(result.locations[0].to_dict())
 
 Each candidate includes the original code, matched evidence, confidence and
 rule ID as well as any decoded city, region and ISO 3166-1 alpha-2 country.
+Hostnames ending in an ISO country-code TLD (for example, `.pl` or `.de`) also
+produce a lower-confidence country candidate.  A country-code TLD reflects the
+DNS namespace and does not guarantee that the named host is physically in that
+country; generic TLDs such as `.com` and `.net` do not produce this hint.
 Built-in templates live in `ptrclassify/data/location_rules.json`.  They are
 deliberately scoped to an operator suffix: a token such as `ord56` on an
 unrelated domain is not treated as Chicago.  Private conventions can be added

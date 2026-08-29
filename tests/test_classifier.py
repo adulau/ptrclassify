@@ -113,6 +113,30 @@ def test_location_tokens_are_not_interpreted_outside_operator_template():
 
 
 @pytest.mark.parametrize(
+    ("hostname", "tld", "country"),
+    [
+        ("188.147.228.101.nat.umts.dynamic.t-mobile.pl", "pl", "PL"),
+        ("host.example.co.uk", "uk", "GB"),
+        ("router.example.de.", "de", "DE"),
+    ],
+)
+def test_country_code_tld_adds_country_location(hostname, tld, country):
+    locations = PTRClassifier().classify(hostname).locations
+    tld_location = next(
+        location for location in locations if location.rule_id == "location.country-code-tld"
+    )
+    assert tld_location.code == tld
+    assert tld_location.country == country
+    assert tld_location.evidence == f".{tld}"
+    assert tld_location.confidence < 0.8
+
+
+@pytest.mark.parametrize("hostname", ["host.example.com", "ord56.example.net"])
+def test_generic_tld_does_not_add_country_location(hostname):
+    assert PTRClassifier().classify(hostname).locations == []
+
+
+@pytest.mark.parametrize(
     ("hostname", "expected"),
     [
         (
