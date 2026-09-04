@@ -529,3 +529,31 @@ def test_2026_isp_and_cloud_templates(hostname, expected):
 )
 def test_ptr_batch_operator_templates(hostname, expected):
     assert expected <= {label.label for label in classify(hostname)}
+
+
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
+        (
+            "dedi-kund-ips.vmheaven.io",
+            {"customer", "hosting", "datacenter", "server"},
+        ),
+        ("dedi-kunde12.example.de", {"customer", "hosting", "datacenter", "server"}),
+        ("dedicated-kunden7.example.de", {"customer", "hosting", "datacenter", "server"}),
+    ],
+)
+def test_german_customer_dedicated_hosting_tokens(hostname, expected):
+    assert expected <= {label.label for label in classify(hostname)}
+
+
+@pytest.mark.parametrize(
+    "hostname",
+    [
+        "undedi.example.de",
+        "kundendienst.example.de",
+    ],
+)
+def test_german_hosting_tokens_require_label_boundaries(hostname):
+    labels = {label.label for label in classify(hostname)}
+    assert "customer" not in labels
+    assert "hosting" not in labels
