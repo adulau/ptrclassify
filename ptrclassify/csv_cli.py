@@ -30,6 +30,14 @@ def build_parser() -> argparse.ArgumentParser:
         help="Column to add with the JSON classification (default: ptrclassify)",
     )
     parser.add_argument(
+        "--labels-field",
+        default="ptrclassify_labels",
+        help=(
+            "Column to add with a compact JSON array of label values "
+            "(default: ptrclassify_labels)"
+        ),
+    )
+    parser.add_argument(
         "--engine",
         choices=("re", "hyperscan"),
         default="re",
@@ -44,8 +52,9 @@ def enrich_csv(
     classifier: PTRClassifier,
     ptr_field: str = "ptr",
     output_field: str = "ptrclassify",
+    labels_field: str = "ptrclassify_labels",
 ) -> None:
-    """Copy CSV rows while appending a JSON-encoded classification column."""
+    """Copy rows while appending compact labels and the full classification."""
     reader = csv.DictReader(source)
     if reader.fieldnames is None:
         raise ValueError("input CSV is missing a header row")
@@ -53,12 +62,24 @@ def enrich_csv(
         raise ValueError(f"input CSV is missing required field {ptr_field!r}")
     if output_field in reader.fieldnames:
         raise ValueError(f"input CSV already contains output field {output_field!r}")
+    if labels_field in reader.fieldnames:
+        raise ValueError(f"input CSV already contains labels field {labels_field!r}")
+    if labels_field == output_field:
+        raise ValueError("labels field and output field must be different")
 
-    writer = csv.DictWriter(destination, fieldnames=[*reader.fieldnames, output_field])
+    writer = csv.DictWriter(
+        destination,
+        fieldnames=[*reader.fieldnames, labels_field, output_field],
+    )
     writer.writeheader()
     for row in reader:
+        classification = classifier.classify(row[ptr_field] or "")
+        row[labels_field] = json.dumps(
+            classification.values(),
+            separators=(",", ":"),
+        )
         row[output_field] = json.dumps(
-            classifier.classify(row[ptr_field] or "").to_dict(),
+            classification.to_dict(),
             sort_keys=True,
             separators=(",", ":"),
         )
@@ -92,6 +113,7 @@ def main(argv: list[str] | None = None) -> int:
                 classifier,
                 ptr_field=args.ptr_field,
                 output_field=args.output_field,
+                labels_field=args.labels_field,
             )
     except (OSError, csv.Error, ValueError) as exc:
         parser.error(str(exc))

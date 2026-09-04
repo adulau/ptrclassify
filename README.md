@@ -123,7 +123,10 @@ ptrclassify --values-only '86-45-50-202-dynamic.agg1.cab.bdt-fng.eircom.net.'
 
 To classify every value in a CSV column named `ptr`, use the CSV enrichment
 script. It preserves the existing columns and appends a `ptrclassify` column
-containing the complete classification as compact JSON:
+containing the complete classification as compact JSON. It also appends a
+`ptrclassify_labels` column containing a compact JSON array of MISP machine-tag
+label values, which makes the most commonly used result available without
+parsing the full classification:
 
 ```bash
 ptrclassify-csv input.csv output.csv
@@ -132,11 +135,12 @@ python classify_ptr_csv.py input.csv output.csv
 ```
 
 Use `-` (or omit both paths) to read from standard input or write to standard
-output. Alternate column names can be selected with `--ptr-field` and
-`--output-field`:
+output. Alternate column names can be selected with `--ptr-field`,
+`--labels-field`, and `--output-field`:
 
 ```bash
-ptrclassify-csv --ptr-field hostname --output-field classification input.csv output.csv
+ptrclassify-csv --ptr-field hostname --labels-field labels \
+  --output-field classification input.csv output.csv
 ```
 
 ## Rule model
