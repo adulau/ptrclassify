@@ -3,7 +3,7 @@
   "info": {
     "title": "ptrclassify API",
     "description": "Explainable heuristic classification for reverse-DNS PTR hostnames. PTR names are operator-controlled, so results are inferences rather than facts.",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "paths": {
     "/health": {
