@@ -2497,5 +2497,45 @@
       "\\.colocrossing\\.com$",
       "(?:^|\\.)cj2hosting\\.nl$"
     ]
+  },
+  {
+    "id": "role.customer.german",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.94,
+    "description": "German customer naming (Kund, Kunde, or Kunden) in a reverse-DNS label.",
+    "patterns": [
+      "(?:^|[._-])kund(?:e|en)?[0-9]*(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "hosting.dedicated.explicit",
+    "category": "hosting",
+    "label": "hosting",
+    "confidence": 0.96,
+    "description": "Hostname explicitly identifies dedicated hosting using dedi or dedicated.",
+    "patterns": [
+      "(?:^|[._-])dedi(?:cated)?[0-9]*(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "hosting.dedicated.datacenter",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.93,
+    "description": "Dedicated-host naming is strong evidence of datacenter infrastructure.",
+    "patterns": [
+      "(?:^|[._-])dedi(?:cated)?[0-9]*(?:[._-]|$)"
+    ]
+  },
+  {
+    "id": "role.dedicated.server",
+    "category": "role",
+    "label": "server",
+    "confidence": 0.9,
+    "description": "Dedicated-host naming indicates a server endpoint.",
+    "patterns": [
+      "(?:^|[._-])dedi(?:cated)?[0-9]*(?:[._-]|$)"
+    ]
   }
 ]
