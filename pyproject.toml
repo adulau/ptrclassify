@@ -24,6 +24,7 @@ api = ["fastapi>=0.110", "uvicorn>=0.29"]
 [project.scripts]
 ptrclassify = "ptrclassify.cli:main"
 ptrclassify-api = "ptrclassify.api:main"
+ptrclassify-csv = "ptrclassify.csv_cli:main"
 
 [tool.setuptools.package-data]
 ptrclassify = ["data/*.json"]
