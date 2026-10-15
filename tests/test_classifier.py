@@ -557,3 +557,34 @@ def test_german_hosting_tokens_require_label_boundaries(hostname):
     labels = {label.label for label in classify(hostname)}
     assert "customer" not in labels
     assert "hosting" not in labels
+
+
+@pytest.mark.parametrize(
+    ("hostname", "expected"),
+    [
+        ("l37-194-75-50.novotelecom.ru", {"residential", "broadband"}),
+        ("c122251101068.v4.c-able.ne.jp", {"residential", "cable"}),
+        ("mo49-96-125-153.iot.mopera.net", {"mobile", "customer"}),
+        ("200-50-207-137.worldnetbrasil.com.br", {"residential", "broadband"}),
+        ("156.166.201.128.cgnat.gpon.onetelecom.net.br", {"residential", "fiber", "cgnat"}),
+        ("a88-202-160-197.openfiber.nl", {"residential", "fiber"}),
+        ("176-73-59-81.ftth.glasoperator.nl", {"residential", "fiber"}),
+        ("131-100-94-244.unifique.net", {"residential", "broadband"}),
+        ("101.208-59-41.ttcl.co.tz", {"residential", "broadband"}),
+    ],
+)
+def test_october_2026_isp_observations(hostname, expected):
+    assert expected <= {label.label for label in classify(hostname)}
+
+
+@pytest.mark.parametrize(
+    "hostname",
+    [
+        "62-148-165-51-hosted-by.denit.net",
+        "242.176.168.184.host.secureserver.net",
+        "120.116.67.68.RevNetBunker1-120.revnet.host",
+        "249.244-124-194.rdns.scalabledns.com",
+    ],
+)
+def test_october_2026_hosting_provider_observations(hostname):
+    assert {"hosting", "datacenter"} <= {label.label for label in classify(hostname)}
