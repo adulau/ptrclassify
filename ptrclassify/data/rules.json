@@ -2537,5 +2537,97 @@
     "patterns": [
       "(?:^|[._-])dedi(?:cated)?[0-9]*(?:[._-]|$)"
     ]
+  },
+  {
+    "id": "isp.observed.consumer.residential.2026-10",
+    "category": "access",
+    "label": "residential",
+    "confidence": 0.93,
+    "description": "Operator-scoped reverse zones observed for fixed consumer access.",
+    "patterns": [
+      "\\.novotelecom\\.ru$",
+      "\\.v4\\.c-able\\.ne\\.jp$",
+      "\\.worldnetbrasil\\.com\\.br$",
+      "\\.gpon\\.onetelecom\\.net\\.br$",
+      "\\.openfiber\\.nl$",
+      "\\.ftth\\.glasoperator\\.nl$",
+      "\\.unifique\\.net$",
+      "\\.ttcl\\.co\\.tz$"
+    ]
+  },
+  {
+    "id": "isp.observed.consumer.broadband.2026-10",
+    "category": "access",
+    "label": "broadband",
+    "confidence": 0.88,
+    "patterns": [
+      "\\.novotelecom\\.ru$",
+      "\\.worldnetbrasil\\.com\\.br$",
+      "\\.unifique\\.net$",
+      "\\.ttcl\\.co\\.tz$"
+    ]
+  },
+  {
+    "id": "isp.observed.consumer.cable.2026-10",
+    "category": "access",
+    "label": "cable",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.v4\\.c-able\\.ne\\.jp$"
+    ]
+  },
+  {
+    "id": "isp.observed.consumer.fiber.2026-10",
+    "category": "access",
+    "label": "fiber",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.gpon\\.onetelecom\\.net\\.br$",
+      "\\.openfiber\\.nl$",
+      "\\.ftth\\.glasoperator\\.nl$"
+    ]
+  },
+  {
+    "id": "isp.observed.mobile.2026-10",
+    "category": "access",
+    "label": "mobile",
+    "confidence": 0.96,
+    "patterns": [
+      "\\.iot\\.mopera\\.net$"
+    ]
+  },
+  {
+    "id": "isp.observed.mobile.customer.2026-10",
+    "category": "role",
+    "label": "customer",
+    "confidence": 0.9,
+    "patterns": [
+      "\\.iot\\.mopera\\.net$"
+    ]
+  },
+  {
+    "id": "hosting.observed.providers.2026-10",
+    "category": "hosting",
+    "label": "hosting",
+    "confidence": 0.98,
+    "description": "Reverse zones belonging to public hosting or server infrastructure providers.",
+    "patterns": [
+      "(?:^|[.-])hosted-by\\.denit\\.net$",
+      "\\.host\\.secureserver\\.net$",
+      "\\.revnet\\.host$",
+      "\\.rdns\\.scalabledns\\.com$"
+    ]
+  },
+  {
+    "id": "hosting.observed.providers.dc.2026-10",
+    "category": "hosting",
+    "label": "datacenter",
+    "confidence": 0.96,
+    "patterns": [
+      "(?:^|[.-])hosted-by\\.denit\\.net$",
+      "\\.host\\.secureserver\\.net$",
+      "\\.revnet\\.host$",
+      "\\.rdns\\.scalabledns\\.com$"
+    ]
   }
 ]
